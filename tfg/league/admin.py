@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import League_User
+from .models import User
 
 # Register your models here.
 
-admin.site.register(League_User)
+admin.site.register(User)
