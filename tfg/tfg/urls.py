@@ -22,4 +22,5 @@ urlpatterns = [
     # Enlace la app league
     path('league/', include('league.urls')),
     
+    
 ]
