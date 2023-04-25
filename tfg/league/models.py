@@ -20,3 +20,5 @@ class User(models.Model):
 
     def __str__(self):
         return self.nb_user
+
+# Revisar validacion de correo en los models
