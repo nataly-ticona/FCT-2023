@@ -1,7 +1,7 @@
+from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 #Librerias para 'Cassiopeia'
-from django_cassiopeia import cassiopeia as cass
 from django.http import JsonResponse
 from django.views import View
 import requests
@@ -19,9 +19,14 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 # restriccion de login en paginas
 from django.contrib.auth.decorators import login_required
+from django_cassiopeia import cassiopeia as cass
+from cassiopeia import Champion, Champions
 
 def index(request):
-    context = {}
+    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    context = {
+        "champions":champions
+    }
     return render(request, 'accounts/index.html', context)
 
 def registerPage(request):
