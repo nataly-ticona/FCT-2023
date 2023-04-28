@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
-
+# para poder añadir imagenes importamos lo siguiente y el static de la variable
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Enlace la app league
-    path('league/', include('league.urls')),
-    
-    
-]
+    path('league/', include('league.urls')),  
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

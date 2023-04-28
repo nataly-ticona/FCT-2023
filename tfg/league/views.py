@@ -9,7 +9,7 @@ import requests
 from django.core import serializers
 #Libreria importada para registro-login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from .forms import *
 from .models import User as Usuario
 
 # mensajes de aviso (usuario creado, documento eliminado, etc)
@@ -76,10 +76,16 @@ def logoutPage(request):
 def privatePage(request):
     context={}
     return render(request, 'accounts/private.html', context)
-#vista de un summoner
-# class SummonerView(View): # Django CBV with json response
-#     def get(self, request):
-#         summoner = cass.Summoner(name="ArYaNaMDA", region='EUW')
-#         print(summoner.profile_icon.url)
-#         return JsonResponse({"name": summoner.name, "level": summoner.level,"imagen":summoner.profile_icon.url})
 
+@login_required(login_url='login')
+def accountSettings(request):
+    user = request.user.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST,request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+    
+    context={'user':user, 'form':form}
+    return render(request, 'accounts/account_settings.html', context)
