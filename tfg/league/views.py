@@ -1,26 +1,31 @@
+# from django.http import HttpResponse
+#Librerias para 'Cassiopeia'
+# from django.http import JsonResponse
+# from django.views import View
+# import requests
+# from django.core import serializers
+#Libreria importada para registro-login
+
 from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-#Librerias para 'Cassiopeia'
-from django.http import JsonResponse
-from django.views import View
-import requests
-#
-from django.core import serializers
-#Libreria importada para registro-login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from .models import User as Usuario
-
+# libreria del LOL
+from cassiopeia import Champion, Champions
+from django_cassiopeia import cassiopeia as cass
 # mensajes de aviso (usuario creado, documento eliminado, etc)
 from django.contrib import messages
-
 # autentificacion, login, logout metodos
 from django.contrib.auth import authenticate, login, logout
 # restriccion de login en paginas
 from django.contrib.auth.decorators import login_required
-from django_cassiopeia import cassiopeia as cass
-from cassiopeia import Champion, Champions
+# email registration
+from django.core.mail import EmailMessage
+from django.conf import settings
+# crea un temepleate con el mensaje y el nommbre del usuario
+# from django.template.loader import render_to_string
+
 
 def index(request):
     champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
@@ -36,17 +41,26 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             cuenta = form.save()
+            
+            # obtenemos datos y los limpiamos para no tener el codigo por defecto
+            nombre_user = form.cleaned_data.get('username')
+            email_user = form.cleaned_data.get('email')
+            messages.success(request, 'Has creado un usuario '+ nombre_user + '! :D')
+            email = EmailMessage(
+                'Bienvenido a Wikigames!', 
+                'Gracias por confiar en esta conmunidad',
+                settings.EMAIL_HOST_USER,
+                [cuenta.email],)
+            email.fail_silently=False
+            email.send()
+
             Usuario.objects.create(
                 user=cuenta,
                 nb_user=cuenta.username,
                 email_user=cuenta.email,
                 passwd_user = cuenta.password
             )
-            # obtenemos datos y los limpiamos para no tener el codigo por defecto
-            nombre_user = form.cleaned_data.get('username')
-            messages.success(request, 'Has creado un usuario '+ nombre_user + '! :D')
-            return redirect('login')
-            
+            return redirect('login')          
     return render(request, 'accounts/register.html', {
         'form':form
     })
