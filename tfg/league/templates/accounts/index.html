@@ -1,13 +1,14 @@
+{%extends 'tfg/base.html'%}  
 
-<p>
-    <span>Hola {{request.user}} </span>
-    <span><a href="{% url 'login'%}">Log in</a></span>
-    <span><a href="{% url 'index'%}">Index</a></span>
-    <span><a href="{% url 'logout'%}">Log out</a></span>
-    <span><a href="{% url 'accountsettings'%}">Account settings</a></span>
-</p>
+{% block link %}
+    {%load static%} {% endblock %}
 
-{% for value in champions %}
-    <pre>{{value}}</pre>
-    <img src="{{value.image.url}}" alt="">
+{%block title %}League of Leguends{% endblock %}
+{% block content %}
+<div class="list_champions">
+{% for champion in champions %}
+    <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+    <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
 {% endfor %}
+</div>
+{% endblock %}

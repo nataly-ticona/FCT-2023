@@ -33,11 +33,13 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'tfg',
+    # 'league'
+    # 'rest_framework',
     #importado la app league
     'league.apps.LeagueConfig',
     #Forma parte de la app de legue y su informacion
     'django_cassiopeia',
-    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,3 +152,11 @@ EMAIL_HOST_USER = 'wikigamesFCT@gmail.com'
 EMAIL_HOST_PASSWORD = 'nkxefynjohgfokcg'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# tokens
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES':(
+#         'rest_framework.authentication.TokenAuthentication',
+#     ),
+#     DEFAULT
+# }

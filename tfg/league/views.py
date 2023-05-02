@@ -13,7 +13,7 @@ from .forms import *
 from .models import User as Usuario
 # libreria del LOL
 from cassiopeia import Champion, Champions
-from django_cassiopeia import cassiopeia as cass
+from django_cassiopeia import cassiopeia 
 # mensajes de aviso (usuario creado, documento eliminado, etc)
 from django.contrib import messages
 # autentificacion, login, logout metodos
@@ -26,13 +26,9 @@ from django.conf import settings
 # crea un temepleate con el mensaje y el nommbre del usuario
 # from django.template.loader import render_to_string
 
-
-def index(request):
-    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
-    context = {
-        "champions":champions
-    }
-    return render(request, 'accounts/index.html', context)
+# tokens django
+# from rest_framework import generics
+# from .serializers import UserSerializer
 
 def registerPage(request):
     form = CreateUserForm()
@@ -43,8 +39,7 @@ def registerPage(request):
             cuenta = form.save()
             
             # obtenemos datos y los limpiamos para no tener el codigo por defecto
-            nombre_user = form.cleaned_data.get('username')
-            email_user = form.cleaned_data.get('email')
+            nombre_user = form.cleaned_data.get('username')            
             messages.success(request, 'Has creado un usuario '+ nombre_user + '! :D')
             email = EmailMessage(
                 'Bienvenido a Wikigames!', 
@@ -86,6 +81,14 @@ def logoutPage(request):
     logout(request)
     return redirect('index')
 
+
+def index(request):
+    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    context = {
+        "champions":champions
+    }
+    return render(request, 'accounts/index.html', context)
+
 @login_required(login_url='login')
 def privatePage(request):
     context={}
@@ -103,3 +106,9 @@ def accountSettings(request):
     
     context={'user':user, 'form':form}
     return render(request, 'accounts/account_settings.html', context)
+
+
+def detaiChampion(request, champion_name):
+    champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
+    context={'champion':champion}
+    return render(request, 'accounts/detail_champion.html', context)

@@ -8,4 +8,6 @@ urlpatterns = [
     path('logout/', views.logoutPage, name='logout'),
     path('private/', views.privatePage, name='private'),
     path('accountsettings/', views.accountSettings, name='accountsettings'),
+    
+   path('<str:champion_name>/', views.detaiChampion, name='detail'),
     ]
