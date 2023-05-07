@@ -10,7 +10,7 @@ from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
-from .models import User as Usuario
+from .models import Token, User as Usuario
 # libreria del LOL
 from cassiopeia import Champion, Champions
 from django_cassiopeia import cassiopeia 
@@ -26,6 +26,11 @@ from django.conf import settings
 # crea un temepleate con el mensaje y el nommbre del usuario
 # from django.template.loader import render_to_string
 
+
+from datetime import datetime, timedelta
+import uuid
+
+from django.http import HttpResponse
 # tokens django
 # from rest_framework import generics
 # from .serializers import UserSerializer
@@ -70,6 +75,22 @@ def loginPage(request):
         # el usuario es valido y redirecciona al index
         if user is not None:
             login(request, user)
+            if request.POST.get('remember-me'):
+                # destruir el token anterior asociada al usuario
+                try:
+                    Token.objects.get(user=user).delete()
+                except Token.DoesNotExist:
+                    pass
+                # generar token y almacenarlo
+                token = str(uuid.uuid4())
+
+                expire_date = datetime.now() + timedelta(days=30)
+                Token.objects.create(user=user, token=token, expire_date=expire_date)
+                # set cookie
+                response = redirect('index')
+                response.set_cookie('remember_me_token', token, expires=expire_date)
+                return response
+            
             return redirect('index')
         else:
             messages.info(request, 'El nombre del usuario o la contraseña es incorrecta')
@@ -78,8 +99,20 @@ def loginPage(request):
     return render(request, 'accounts/login.html',context )
 
 def logoutPage(request):
+    # obtener cookie
+    token = request.COOKIES.get('remember_me_token')
+    response = redirect('index')
+    if token is not None:
+        try:
+            #eliminar registro del token
+            Token.objects.get(token=token).delete()
+        except Token.DoesNotExist:
+            pass
+        #destruir cookie
+        response.delete_cookie('remember_me_token')
+    #logout
     logout(request)
-    return redirect('index')
+    return response
 
 
 def index(request):
