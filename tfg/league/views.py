@@ -141,7 +141,7 @@ def accountSettings(request):
     return render(request, 'accounts/account_settings.html', context)
 
 
-def detaiChampion(request, champion_name):
+def detailChampion(request, champion_name):
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     context={'champion':champion}
     return render(request, 'accounts/detail_champion.html', context)

@@ -1,5 +1,4 @@
 from django.urls import path
-
 # Import para recuperar la contraseña
 from . import views
 from django.contrib.auth import views as auth_views
@@ -12,7 +11,7 @@ urlpatterns = [
     path('private/', views.privatePage, name='private'),
     path('accountsettings/', views.accountSettings, name='accountsettings'),
     
-   path('<str:champion_name>/', views.detaiChampion, name='detail'),
+   path('champion/<str:champion_name>/', views.detailChampion, name='detail'),
    
    #url's para recuperar la contraseña
     #vista para introducir el correo y asi cambiar a contraseña
