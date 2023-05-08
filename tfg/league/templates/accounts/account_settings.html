@@ -1,9 +1,22 @@
+{%extends 'tfg/base.html'%}  
 
-<img src="{{user.photo_user.url}}">
+{% block link %}
+    {%load static%} 
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{% static 'league/account_settings.css' %}">
+    {% endblock %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="actualizar">
-</form>
+{%block title %}League of Leguends{% endblock %}
+{% block content %}
+<div class="account_settings">
+{% for champion in champions %}
+    <img src="{{user.photo_user.url}}">
 
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="actualizar">
+    </form>
+{% endfor %}
+</div>
+{% endblock %}
