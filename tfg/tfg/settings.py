@@ -148,10 +148,15 @@ MEDIA_URL='media/'
 
 
 # email registration validation
+# backend   
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Host de email 
 EMAIL_HOST = 'smtp.gmail.com'
+# email de la empresa   
 EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
+# password de la empresa   
 EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
+# puerto 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

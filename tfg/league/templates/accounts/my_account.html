@@ -7,16 +7,11 @@
 
 {%block title %}Account settings{% endblock %}
 {% block content %}
-    <div class="account_settings">
-        <div class="account_setting_image">
+    <div class="user_admin">
+        <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+        <div class="">
             <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
         </div>
-        <div class="account_settings_form">
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" value="actualizar">
-            </form>
-        </div>
+        
     </div>
 {% endblock %}

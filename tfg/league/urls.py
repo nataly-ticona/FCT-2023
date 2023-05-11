@@ -9,11 +9,11 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutPage, name='logout'),
     path('private/', views.privatePage, name='private'),
+    path('user/<str:user_name>', views.userView, name='user'),
+    path('myaccount/', views.myAccount, name='myaccount'),
     path('accountsettings/', views.accountSettings, name='accountsettings'),
-    
-   path('champion/<str:champion_name>/', views.detailChampion, name='detail'),
-   
-   #url's para recuperar la contraseña
+    path('champion/<str:champion_name>/', views.detailChampion, name='detail'),
+    #url's para recuperar la contraseña
     #vista para introducir el correo y asi cambiar a contraseña
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="accounts/reset_password.html"), name='reset_password'),
     #Confirmacion de que se puede cambiar la contraseña

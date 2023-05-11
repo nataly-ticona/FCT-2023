@@ -1,11 +1,3 @@
-# from django.http import HttpResponse
-#Librerias para 'Cassiopeia'
-# from django.http import JsonResponse
-# from django.views import View
-# import requests
-# from django.core import serializers
-#Libreria importada para registro-login
-
 from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -117,8 +109,10 @@ def logoutPage(request):
 
 def index(request):
     champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    usuarios = Usuario.objects.all
     context = {
-        "champions":champions
+        "champions":champions,
+        "usuarios": usuarios,
     }
     return render(request, 'accounts/index.html', context)
 
@@ -140,8 +134,18 @@ def accountSettings(request):
     context={'user':user, 'form':form}
     return render(request, 'accounts/account_settings.html', context)
 
-
 def detailChampion(request, champion_name):
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     context={'champion':champion}
     return render(request, 'accounts/detail_champion.html', context)
+
+def userView(request, user_name):
+    usuario = Usuario.objects.get(nb_user=user_name)
+    context = {'usuario': usuario}
+    return render(request, 'accounts/user_public.html', context)
+
+@login_required(login_url='login')
+def myAccount(request):
+    user = request.user.user
+    context={'user':user,}
+    return render(request, 'accounts/my_account.html', context)

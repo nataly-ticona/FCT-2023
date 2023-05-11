@@ -1,0 +1,17 @@
+{%extends 'tfg/base.html'%}  
+
+{% block link %}
+    {%load static%} 
+        <link rel="stylesheet" type="text/css" href="{% static 'league/user_public.css' %}">
+{% endblock %}
+
+{%block title %} {{usuario.nb_user}} {% endblock %}
+{% block content %}
+    <div class="info_user">
+        <img src="{{usuario.photo_user.url}}" alt="{{usuario.nb_user}} ">
+        <span>{{usuario.nb_user}}</span>
+    </div>
+    <div class="post">
+
+    </div>
+{% endblock %}

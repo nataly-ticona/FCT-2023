@@ -1,3 +1,16 @@
-body{
-    background-color: red;
+.account_settings{
+    display: flex;
+    margin: 0 auto;
+}
+.account_setting_image{
+    width: 40%;
+}
+.account_setting_image>img{
+    width: 20%;
+    float: right;
+    border-radius: 50%;
+}
+.account_settings_form{
+    width: 60%;
+    padding: 20px 0 0 20px;
 }

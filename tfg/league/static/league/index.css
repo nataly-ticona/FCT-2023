@@ -1,0 +1,17 @@
+.user_hello{
+    text-align: center;
+}
+
+.content{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.users_list{
+    width: 10%;
+}
+
+.list_champions{
+    width: 90%;
+}

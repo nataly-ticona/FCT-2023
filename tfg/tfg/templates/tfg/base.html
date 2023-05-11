@@ -7,17 +7,50 @@
     {% block link %}{% endblock %}
     <title>{%block title %}{% endblock %}</title>
     <style>
-       
+    :root{
+        --header-color: rgb(37, 37, 74);;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    main{
+        margin: 0 auto;
+    }
+    a:link, a:visited, a:active {
+        text-decoration:none;
+    }
+    header{
+       width: 100%;
+       margin: 0 auto;
+       text-align: center;
+       margin-bottom: 20px;
+    }
+    header>ul{
+        list-style:none;
+    }
+    header>ul>li{
+        display: inline-block;
+        text-align: center;
+        background-color: var(--header-color);
+        padding: 20px;
+    }
+    header>ul>li>a{
+        color: white;
+        padding: 20px;
+    }
     </style>
 </head>
 <body>
     <header>
-        <span>Hola {{request.user}} </span>
-        <span><a href="{% url 'login'%}">Log in</a></span>
-        <span><a href="{% url 'index'%}">Index</a></span>
-        <span><a href="{% url 'logout'%}">Log out</a></span>
-        <span><a href="{% url 'accountsettings'%}">Account settings</a></span>
-        <span><a href="{% url 'reset_password'%}">Reset_password</a></span>
+        <ul>
+            <li><a href="{% url 'login'%}">Log in</a></li>
+            <li><a href="{% url 'index'%}">Index</a></li>
+            <li><a href="{% url 'logout'%}">Log out</a></li>
+            <li><a href="{% url 'accountsettings'%}">Account settings</a></li>
+            <li><a href="{% url 'reset_password'%}">Reset my password</a></li>
+            <li><a href="{% url 'myaccount'%}">My account</a></li>
+        </ul>
     </header>
     <main>
         {% block content %}{% endblock %}
