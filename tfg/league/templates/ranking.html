@@ -1,0 +1,15 @@
+{%extends 'tfg/base.html'%}  
+
+{% block link %}
+    {%load static%} {% endblock %}
+
+{%block title %}League of Leguends{% endblock %}
+{% block content %}
+<h2>Ladder</h2>
+
+{{jugador}}
+{% for value in best %}
+    {{value.summoner}}
+    <br>
+{% endfor %}
+{% endblock %}
