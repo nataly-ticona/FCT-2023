@@ -159,3 +159,12 @@ def ranking(request):
         "challenger":challenger,
         "best":best,
     })
+
+# vista tier list
+def tier_list(request):
+    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    context = {
+        "champions":champions
+    }
+    return render(request, 'tier_list.html', context)
+
