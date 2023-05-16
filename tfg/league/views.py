@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from .models import Token, User as Usuario
 # libreria del LOL
-from cassiopeia import Champion, Champions
+from cassiopeia import Champion, Champions, Queue
 from django_cassiopeia import cassiopeia 
 # mensajes de aviso (usuario creado, documento eliminado, etc)
 from django.contrib import messages
@@ -149,3 +149,13 @@ def myAccount(request):
     user = request.user.user
     context={'user':user,}
     return render(request, 'accounts/my_account.html', context)
+
+
+def ranking(request):
+    #Queue por defecto es soloq 5x5
+    challenger = cassiopeia.get_challenger_league(cassiopeia.Queue.ranked_solo_fives, CASSIOPEIA_DEFAULT_REGION)
+    best = challenger
+    return render(request, 'league/ranking.html',{
+        "challenger":challenger,
+        "best":best,
+    })
