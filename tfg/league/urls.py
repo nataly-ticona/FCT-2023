@@ -13,6 +13,7 @@ urlpatterns = [
     path('myaccount/', views.myAccount, name='myaccount'),
     path('accountsettings/', views.accountSettings, name='accountsettings'),
     path('champion/<str:champion_name>/', views.detailChampion, name='detail'),
+    path('ranking/', views.ranking, name='ranking'),
     #url's para recuperar la contraseña
     #vista para introducir el correo y asi cambiar a contraseña
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="accounts/reset_password.html"), name='reset_password'),
