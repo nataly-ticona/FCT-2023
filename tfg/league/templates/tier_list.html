@@ -1,0 +1,20 @@
+{%extends 'tfg/base.html'%}  
+
+{% block link %}
+    {%load static%} {% endblock %}
+
+{%block title %}{% endblock %}
+{% block content %}
+
+<p>Esto es la tier list</p>
+
+<div class="tier_list">
+{% for champion in champions %}
+    <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+   <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
+    <a href="{% url 'detail' champion.name %}">{{champion.name}}</a>
+    
+{% endfor %}
+</div>
+
+{% endblock %}
