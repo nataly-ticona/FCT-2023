@@ -6,15 +6,35 @@
 {%block title %}{{champion.name}}{% endblock %}
 {% block content %}
 <div class="champion">
-    <p>{{champion.name}}</p>
-    <a href=""><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
-    {% for spell in champion.spells%}
-    <p> {{spell.name}}</p>
-        {% for key in spell.keywords%}
-        <p>{{key}}</p>
-        <p>{{value}}</p>
+    <h2>{{champion.name}}</h2>
+    <img src="{{champion.image.url}}" alt="{{champion.name}}">
+    <br>
+    <p>Dificultad: {{champion.info.difficulty}}</p>
+    <p>Habilidad pasiva: {{champion.passive.name}}</p>
+    <!-- <img src="{{champion.passive.image.url}}" alt="{{champion.passive.name}}"> -->
+    
+
+    <h3>Hechizos</h3>
+        {% for spell in champion.spells%}
+        <p> {{spell.name}}</p>
+        <!-- <img src="{{spell.image.url}}" alt="{{spell.name}}"> -->
+            {% for key in spell.keywords%}
+            <span>{{key}}</span>
+            <span>{{value}}</span>
+            {%endfor%}
         {%endfor%}
-    {%endfor%}
 </div>
-<pre>{{champion.spells}}</pre>
+
+<br>
+{% for rune in runes%}
+    <p>{{rune.name }}</p>
+    <img src="{{rune.image.url}}" alt="{{rune.name }}">
+{%endfor%}
+
+<!-- {% for item in items %}
+    {{item}}
+    <img src="{{item.image.url}}" alt="{{item.name }}"> 
+
+{%endfor%} -->
+
 {% endblock %}

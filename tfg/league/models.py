@@ -30,3 +30,16 @@ class Token(models.Model):
         return self.token
 
 # Revisar validacion de correo en los models
+# class Post(models.Model):
+#     user_post      = models.ForeignKey(User_Default, on_delete=models.CASCADE)
+#     champion       = models.CharField(max_length=200,unique=True)
+#     runes          = ArrayField(
+#                         ArrayField(
+#                             models.CharField(max_length=10, blank=True),
+#                             size=8,
+#                         ),
+#                         size=8,
+#                     )
+#     items
+#     summoner_spells
+#     habilities 
