@@ -4,42 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     {% block link %}{% endblock %}
     <title>{%block title %}{% endblock %}</title>
-    <style>
-    :root{
-        --header-color: rgb(37, 37, 74);;
-    }
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    main{
-        margin: 0 auto;
-    }
-    a:link, a:visited, a:active {
-        text-decoration:none;
-    }
-    header{
-       width: 100%;
-       margin: 0 auto;
-       text-align: center;
-       margin-bottom: 20px;
-    }
-    header>ul{
-        list-style:none;
-    }
-    header>ul>li{
-        display: inline-block;
-        text-align: center;
-        background-color: var(--header-color);
-        padding: 20px;
-    }
-    header>ul>li>a{
-        color: white;
-        padding: 20px;
-    }
-    </style>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'league/styles/base.css' %}">
+   
 </head>
 <body>
     <header>

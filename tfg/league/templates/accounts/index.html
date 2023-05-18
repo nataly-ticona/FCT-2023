@@ -7,7 +7,11 @@
 
 {%block title %}League of Leguends{% endblock %}
 {% block content %}
-    <h1 class="user_hello">Hola {{request.user}} </h1>
+    {% if  user.is_anonymous%}
+        <h1 class="user_hello">Inicia sesion</h1>
+    {% else %}
+        <h1 class="user_hello">Hola {{request.user}} </h1>
+    {% endif %}
     <div class="content">
         <div class="users_list">
             <h2>Usuarios</h2>

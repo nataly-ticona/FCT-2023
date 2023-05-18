@@ -1,20 +1,32 @@
-<form action="" method="POST">
-    {% csrf_token %}
-    <label for="username"> Nombre de usuario: 
-        <input type="text" name="username" id="username">
-    </label>
-    <br>
-    <label for="password"> Contraseña
-        <input type="password" name="password" id="password">
-    </label>
-    <br>
-    <label for="remember-me">Recordar usuario
-        <input type="checkbox" id="remember-me" name="remember-me">
-    </label>
-    <br>
-    <input type="submit" value="Acceder">
-</form>
+{%extends 'tfg/base.html'%}  
 
-{% for message in messages%}
-<p>{{message}}</p>
-{% endfor%}
+{% block link %}
+    {%load static%} 
+        <link rel="stylesheet" type="text/css" href="{% static 'league/account_settings.css' %}">
+{% endblock %}
+
+{%block title %}Account settings{% endblock %}
+{% block content %}
+    <div class="user_data">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="username"> Nombre de usuario: 
+                <input type="text" name="username" id="username">
+            </label>
+            <br>
+            <label for="password"> Contraseña
+                <input type="password" name="password" id="password">
+            </label>
+            <br>
+            <label for="remember-me">Recordar usuario
+                <input type="checkbox" id="remember-me" name="remember-me">
+            </label>
+            <br>
+            <input type="submit" value="Acceder">
+        </form>
+    </div>
+
+    {% for message in messages%}
+    <p>{{message}}</p>
+    {% endfor%}    
+{% endblock %}

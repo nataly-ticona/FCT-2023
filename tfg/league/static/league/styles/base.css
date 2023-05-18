@@ -1,0 +1,51 @@
+:root{
+    --header-color: #421092;
+    --typography-headings:'Montserrat';
+    --typography-texts: 'Lato';
+    --background-color: #1D0642;
+    --headings-color: #FFF;
+    --text-color: #F1C5E4;
+    --link-color:#E24795;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color:var(--background-color) ;
+}
+main{
+    margin: 0 auto;
+    font-family: var(--typography-texts);
+    color: var(--text-color);
+}
+
+h1,h2,h3,h4,h5{
+    font-family: var(--typography-headings);
+    color: var(--headings-color);
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+    color: var(--link-color);
+}
+header, header a:link, header a:visited, header a:active {
+   width: 100%;
+   margin: 0 auto;
+   text-align: center;
+   margin-bottom: 20px;
+   color: var(--headings-color);
+}
+header>ul{
+    list-style:none;
+}
+header>ul>li{
+    display: inline-block;
+    text-align: center;
+    background-color: var(--header-color);
+    padding: 20px;
+}
+header>ul>li>a{
+    color: white;
+    padding: 20px;
+}
