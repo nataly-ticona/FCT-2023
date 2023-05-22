@@ -2,7 +2,7 @@
 
 {% block link %}
     {%load static%} 
-    <link rel="stylesheet" type="text/css" href="{% static 'league/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/index.css' %}">
 {% endblock %}
 
 {%block title %}League of Leguends{% endblock %}
@@ -12,12 +12,24 @@
     {% else %}
         <h1 class="user_hello">Hola {{request.user}} </h1>
     {% endif %}
+    <br>
+    <div class="search_champion" id="search_champion">
+        <input type="text" name="" id="" placeholder="Busca un campeón">
+        <a>
+            <svg class="search-icon" role="img">
+                <g class="search-path" fill="none" stroke="#848F91">
+                    <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/>
+                    <circle cx="8" cy="8" r="7"/>
+                </g>
+            </svg>
+          </a>
+    </div>
     <div class="content">
         <div class="users_list">
             <h2>Usuarios</h2>
-            {% for usuario in usuarios %}
+            {% for user in users %}
                 <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
-                <p><a href="{% url 'user' usuario.nb_user %}">{{usuario.nb_user}}</a></p>
+                <p><a href="{% url 'user' user.nb_user %}">{{user.nb_user}}</a></p>
             {% endfor %}
        </div>
     

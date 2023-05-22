@@ -2,12 +2,33 @@
     text-align: center;
 }
 
-.content{
+main{
     width: 80%;
     margin: 0 auto;
-    display: flex;
 }
 
+.search_champion{
+    display: flex;
+    justify-content:center ;
+    width: 100%;
+    margin: 0 auto;
+    height: 3rem;
+    background-color: var(--background-divs);
+    padding: 10px 0 0 0;
+}
+.search_champion > input{
+    width: 70% ;
+}
+.search_champion >a{
+    width: 20%;
+}
+
+.content{
+    margin: 0 auto;
+    display: flex;
+    background-color: var(--background-divs);
+    padding: 10px;
+}
 .users_list{
     width: 10%;
 }
@@ -15,3 +36,4 @@
 .list_champions{
     width: 90%;
 }
+

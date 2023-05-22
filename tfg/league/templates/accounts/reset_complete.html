@@ -1,17 +1,13 @@
 {%extends 'tfg/base.html'%}  
 
 {% block link %}
-    {%load static%} {% endblock %}
+    {%load static%} 
+<link rel="stylesheet" type="text/css" href="{% static 'league/styles/reset_password.css' %}">    
+{% endblock %}
 
-{%block title %}Reset_password{% endblock %}
+{%block title %}Volver al inicio{% endblock %}
 {% block content %}
-
-<form action="" method="post">
-
-        {% csrf_token %}
-        {{ form }}
-        <br>
-        <input type="submit" value="Enviar" name="Update Password">
-</form>
-
+<div class="form_password">
+<a href="{% url 'login'%}">Volver a iniciar sesión</a>
+</div>
 {% endblock %}

@@ -1,10 +1,11 @@
 from tfg.settings import CASSIOPEIA_DEFAULT_REGION
+from tfg.settings import CASSIOPEIA_RIOT_API_KEY
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from .models import Token, User as Usuario
 # libreria del LOL
-from cassiopeia import Champion, Champions, Queue
+from cassiopeia import Champion, Champions, Queue, Patch
 from django_cassiopeia import cassiopeia 
 # mensajes de aviso (usuario creado, documento eliminado, etc)
 from django.contrib import messages
@@ -109,10 +110,10 @@ def logoutPage(request):
 
 def index(request):
     champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
-    usuarios = Usuario.objects.all
+    users = Usuario.objects.all
     context = {
         "champions":champions,
-        "usuarios": usuarios,
+        "users": users,
     }
     return render(request, 'accounts/index.html', context)
 
@@ -165,9 +166,16 @@ def ranking(request):
 
 # vista tier list
 def tier_list(request):
-    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    patch = Patch.latest(region=CASSIOPEIA_DEFAULT_REGION)
+    champions = Champion(region=CASSIOPEIA_DEFAULT_REGION, api_key=CASSIOPEIA_RIOT_API_KEY)
+
+    for champion in champions:
+        champion_id = champion.id
+        win_rate = champion.win_rate(patch=patch, champion_id=champion_id)
+    print(f"{champion.name}: {win_rate}%")
+
     context = {
-        "champions":champions
+        # "champions":champions
     }
     return render(request, 'league/tier_list.html', context)
 

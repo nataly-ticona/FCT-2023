@@ -2,16 +2,15 @@
 
 {% block link %}
     {%load static%} 
-        <link rel="stylesheet" type="text/css" href="{% static 'league/account_settings.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'league/styles/my_account.css' %}">
 {% endblock %}
 
 {%block title %}Account settings{% endblock %}
 {% block content %}
     <div class="user_admin">
-        <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
-        <div class="">
+        <div class="data_user">
             <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
         </div>
-        
+        <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
     </div>
 {% endblock %}

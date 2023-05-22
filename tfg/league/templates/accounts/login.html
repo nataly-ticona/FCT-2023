@@ -2,12 +2,13 @@
 
 {% block link %}
     {%load static%} 
-        <link rel="stylesheet" type="text/css" href="{% static 'league/account_settings.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'league/styles/login.css' %}">
 {% endblock %}
 
 {%block title %}Account settings{% endblock %}
 {% block content %}
     <div class="user_data">
+        <h1>Inicio de sesión</h1>
         <form action="" method="POST">
             {% csrf_token %}
             <label for="username"> Nombre de usuario: 
@@ -26,7 +27,9 @@
         </form>
     </div>
 
-    {% for message in messages%}
-    <p>{{message}}</p>
-    {% endfor%}    
+    <div class="errors">
+        {% for message in messages%}
+            <p>{{message}}</p>
+        {% endfor%}  
+    </div>  
 {% endblock %}
