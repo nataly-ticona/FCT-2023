@@ -84,6 +84,8 @@ def loginPage(request):
                 response.set_cookie('remember_me_token', token, expires=expire_date)
                 return response
             
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect('index')
         else:
             messages.info(request, 'El nombre del usuario o la contraseña es incorrecta')

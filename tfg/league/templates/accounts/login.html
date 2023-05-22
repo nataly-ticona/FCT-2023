@@ -11,7 +11,10 @@
         <h1>Inicio de sesión</h1>
         <form action="" method="POST">
             {% csrf_token %}
-            <label for="username"> Nombre de usuario: 
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
+                <label for="username"> Nombre de usuario: 
                 <input type="text" name="username" id="username">
             </label>
             <br>
