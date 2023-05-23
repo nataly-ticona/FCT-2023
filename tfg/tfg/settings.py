@@ -34,6 +34,9 @@ ALLOWED_HOSTS = ['localhost']
 
 INSTALLED_APPS = [
     'tfg',
+    #mathfilters siver para realizar operaciones matematicas sencillas en el template
+    #pip install django-mathfilters
+    'mathfilters',
     # 'league'
     # 'rest_framework',
     #importado la app league
