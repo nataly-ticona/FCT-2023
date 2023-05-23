@@ -1,3 +1,4 @@
+import requests
 from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from tfg.settings import CASSIOPEIA_RIOT_API_KEY
 from django.shortcuts import render, redirect
