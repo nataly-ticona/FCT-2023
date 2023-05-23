@@ -140,10 +140,9 @@ def accountSettings(request):
 def detailChampion(request, champion_name):
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     runes = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
-    # items = champion.recommended_itemsets()
-
+       
     context={'champion':champion, 'runes': runes,}
-    return render(request, 'accounts/detail_champion.html', context)
+    return render(request, 'league/detail_champion.html', context)
 
 def userView(request, user_name):
     usuario = Usuario.objects.get(nb_user=user_name)

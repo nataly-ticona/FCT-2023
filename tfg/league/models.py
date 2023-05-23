@@ -13,7 +13,7 @@ class User(models.Model):
     nb_user             =models.CharField(max_length=200,unique=True)
     passwd_user         =models.CharField(max_length=200)
     nick_name_user      =models.CharField(max_length=200)
-    photo_user          =models.ImageField(default="/imagen/profile.png", upload_to='imagen', null=True, blank=False)
+    photo_user          =models.ImageField(default="/imagen/users/profile.png", upload_to='imagen/users', null=True, blank=False)
     date_joined_user    =models.DateTimeField(default=timezone.now)
     #Falta categoria de vip/common
     #Falta is_active?
