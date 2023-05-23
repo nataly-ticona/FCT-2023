@@ -16,6 +16,8 @@ from django.contrib.auth.decorators import login_required
 # email registration
 from django.core.mail import EmailMessage
 from django.conf import settings
+#paginador para el ranking
+from django.core.paginator import Paginator
 # crea un temepleate con el mensaje y el nommbre del usuario
 # from django.template.loader import render_to_string
 
@@ -157,13 +159,28 @@ def myAccount(request):
 
 
 def ranking(request):
-    #Queue por defecto es soloq 5x5
-    challenger = cassiopeia.get_challenger_league(cassiopeia.Queue.ranked_solo_fives, CASSIOPEIA_DEFAULT_REGION)
-    best = challenger
+    page_amount=25
+    url = f'https://euw1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key={CASSIOPEIA_RIOT_API_KEY}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        challenger =response.json()['entries']
+        challenger.sort(key=extract_time, reverse=True)
+        paginator = Paginator(challenger, page_amount)  # Show 25 values per page.
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+        # best = challenger[0]
     return render(request, 'league/ranking.html',{
         "challenger":challenger,
-        "best":best,
+        "page_obj":page_obj,
+        "page_amount":page_amount
+        # "best":best,
     })
+#Para ordenar por lp
+def extract_time(json):
+    try:
+        return int(json['leaguePoints'])
+    except KeyError:
+        return 0
 
 # vista tier list
 def tier_list(request):
