@@ -1,37 +1,140 @@
 {%extends 'tfg/base.html'%}  
 {% load mathfilters %}
 {% block link %}
-    {%load static%} {% endblock %}
+    {%load static%} 
+    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/ranking.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
 
 {%block title %}League of Leguends{% endblock %}
 {% block content %}
-<h2>Ladder</h2>
+<h2 class="ladder-title">Challenger ladder EUW</h2>
 
+<div class="ladder">
+    {% if page_obj.number == 1 %}
+    <div class="ladder-podium">
+        <div class="podium-second">
+            <div class="podium-item-ranking">
+                <h3>Rank 2</h3>
+            </div>
+            <div class="podium-item-summoner">
+                {{best.1.summonerName}}
+            </div>
+            <div class="podium-item-lp">
+                {{best.1.leaguePoints}}
+            </div>
+            <div class="podium-item-wins-losses">
+                {{best.1.wins}} / {{best.1.losses}}
+            </div>
+        </div>
+        <div class="podium-first">
+            <div class="crown">
+                <img class="crown-image" src="/media/imagen/league/ladder/simple_crown_icon.svg" alt="">
+            </div>
+            <div class="podium-item-ranking">
+                <h3>Rank 1</h3>
+            </div>
+            <div class="podium-item-summoner">
+                {{best.0.summonerName}}
+            </div>
+            <div class="podium-item-lp">
+                {{best.0.leaguePoints}}
+            </div>
+            <div class="podium-item-wins-losses">
+                {{best.0.wins}} / {{best.0.losses}}
+            </div>
+        </div>
+        <div class="podium-third">
+            <div class="podium-item-ranking">
+                <h3>Rank 3</h3>
+            </div>
+            <div class="podium-item-summoner">
+                {{best.2.summonerName}}
+            </div>
+            <div class="podium-item-lp">
+                {{best.2.leaguePoints}}
+            </div>
+            <div class="podium-item-wins-losses">
+                {{best.2.wins}} / {{best.2.losses}}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="ladder-items">
+        <div class="ladder-header">
+            <div class="ladder-item-ranking-header">
+                Rank
+            </div>
+            <div class="ladder-item-summoner-header">
+                Summoner
+            </div>
+            <div class="ladder-item-lp-header">
+                LP
+            </div>
+            <div class="ladder-item-wins-losses-header">
+                Wins/Losses
+            </div>
+        </div>
+        <!-- Objectivo: si es la primera pagina, mostrar solo a partir del 3er dato, de no ser así, mostrar todos -->
+        <!-- Por ahora meto un if dentro de un if, no se como controlarlo de otra forma me temo -->
+                    <!-- buscar otra forma de arreglar esto, a lo mejor una funcion ? Preguntar luego -->
 
-
-{% for player in page_obj %}
-    {{page_obj.number|add:-1|mul:page_amount|add:forloop.counter}}
-    {{player.summonerName}}
-    {{player.leaguePoints}}
-    wins:{{player.wins}} / loses: {{player.losses}}
-    <br>
-{% endfor %} 
-{% comment %} esto fue copiado de la documentacion {% endcomment %}
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% for player in page_obj %}
+        {% if page_obj.number == 1 %}
+            {% if forloop.counter > 3 %}
+            <div class="ladder-item {% cycle 'light-row' 'dark-row' %}">
+                <div class="ladder-item-ranking">
+                    {{page_obj.number|add:-1|mul:page_amount|add:forloop.counter}}
+                </div>
+                <div class="ladder-item-summoner">
+                    {{player.summonerName}}
+                </div>
+                <div class="ladder-item-lp">
+                    {{player.leaguePoints}}
+                </div>
+                <div class="ladder-item-wins-losses">
+                    {{player.wins}} / {{player.losses}}
+                </div>
+            </div>
+            {% endif %}
+        {% else %}
+            <div class="ladder-item {% cycle 'light-row' 'dark-row' %}">
+                <div class="ladder-item-ranking">
+                    {{page_obj.number|add:-1|mul:page_amount|add:forloop.counter}}
+                </div>
+                <div class="ladder-item-summoner">
+                    {{player.summonerName}}
+                </div>
+                <div class="ladder-item-lp">
+                    {{player.leaguePoints}}
+                </div>
+                <div class="ladder-item-wins-losses">
+                    {{player.wins}} / {{player.losses}}
+                </div>
+            </div>
         {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        {% endfor %} 
+    </div>
+    {% comment %} Lo de la paginacion fue copiado de la documentacion {% endcomment %}
+    <div class="pagination" id="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a name="" id="" class="btn btn-primary" href="?page=1" role="button"> &laquo; First</a>
+                <a name="" id="" class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}" role="button">Previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a name="" id="" class="btn btn-primary" href="?page={{ page_obj.next_page_number }}" role="button">Next</a>
+                <a name="" id="" class="btn btn-primary" href="?page={{ page_obj.paginator.num_pages }}" role="button">Last &raquo;</a>
+            {% endif %}
         </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+    </div>
 </div>
-{% endblock %}
+{% endblock %}    

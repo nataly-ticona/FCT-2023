@@ -180,12 +180,12 @@ def ranking(request):
         paginator = Paginator(challenger, page_amount)  # Show 25 values per page.
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        # best = challenger[0]
+        best = challenger[0:3]
     return render(request, 'league/ranking.html',{
         "challenger":challenger,
         "page_obj":page_obj,
-        "page_amount":page_amount
-        # "best":best,
+        "page_amount":page_amount,
+        "best":best,
     })
 #Para ordenar por lp
 def extract_time(json):

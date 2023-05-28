@@ -2,4 +2,14 @@
     margin: 0 auto;
     width: 80rem;
     background-color: var(--background-divs);
+    padding: 3rem;
+}
+.champion-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.champion-title{
+    display: inline-block;
 }

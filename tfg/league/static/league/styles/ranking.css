@@ -1,0 +1,70 @@
+.ladder{
+    margin: 0 auto;
+    width: 80rem;
+    background-color: var(--background-divs);
+    padding: 1.5rem 3rem;
+}
+#pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ladder-item, .ladder-header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr 5fr;
+    padding: 0.5rem 1rem;
+}
+.ladder-header{
+    border-bottom: 1px solid var(--headings-color);
+}
+.ladder-header>*{
+
+    font-weight: 600;
+}
+.ladder-title{
+    text-align: center;
+}
+.ladder-podium{
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr);  */
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    width: 100%;
+    height: 20rem;
+    margin-bottom: 1rem;
+}
+.ladder-podium>div{
+    background-color: var(--background-color);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+}
+.podium-first{
+    height: 100%;
+    flex-grow: 1.5;
+}
+.podium-second{
+    height: 75%;
+    flex-grow: 1;
+}
+.podium-third{
+    height: 70%;
+    flex-grow: 1;
+}
+.podium-item-ranking>h3{
+    margin: 0;
+}
+.crown-image{
+    width: 4rem;
+}
+.ladder-item-wins-losses-header, .ladder-item-wins-losses,
+.ladder-item-lp-header, .ladder-item-lp
+{
+    text-align: center;
+}
+.light-row{
+    background-color: var(--background-color);
+}
