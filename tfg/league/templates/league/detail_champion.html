@@ -50,7 +50,7 @@
                 </div>
                         
                 {% for skin_champion in img_champion_skin %}
-                    {% if champion.name|cut:' ' in  skin_champion %}
+                    {% if champion.name|cut:' ' in  skin_champion and skin_champion != champion.name|cut:' '|add:'_0.jpg'%}
                         <div class="item">
                             <img src="/media/imagen/league/skins/{{skin_champion}}" alt="{{skin_champion}} skin"   height="345">
                             <div class="carousel-caption">

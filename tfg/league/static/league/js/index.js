@@ -3,6 +3,6 @@
 // list_champions.innerHTML = "";
 
 // function championKey(){
-//     champions.style.style.backgroundColor = "red";
+//     list_champions.style.style.backgroundColor = "red";
 
 // }
