@@ -13,34 +13,31 @@
 
 <div class="champion">
     <h2>{{champion.name}}</h2>
-    <img src="{{champion.image.url}}" alt="{{champion.name}}">
-    <br>
-    {% comment %} <p>ID: {{champion.id}}</p> {% endcomment %}
-    <p>Dificultad: {{champion.info.difficulty}}/10</p>
-    <p>Habilidad pasiva: {{champion.passive.name}}</p>
-    <p>Descripcion passiva:{{champion.passive.description}}</p>
-
-    <h3>Hechizos</h3>
-        <p></p>
-        <img src="/media/imagen/league/spell/{{champion.name|cut:' '}}Q.png" alt="{{champion.name}}Q">
-        <img src="/media/imagen/league/spell/{{champion.name|cut:' '}}E.png" alt="{{champion.name}}E">
-        <img src="/media/imagen/league/spell/{{champion.name|cut:' '}}W.png" alt="{{champion.name}}W">
-        <img src="/media/imagen/league/spell/{{champion.name|cut:' '}}R.png" alt="{{champion.name}}R">
-
-        <!-- {% for spell in champion.spells%}
-        <p> {{spell.name}}</p>
+    <h3>Habilidades</h3>
+        {% for abilitie_champion in img_champion_abilities %}
             
-        {%endfor%} -->
+            {% if champion.name|cut:' ' in  abilitie_champion %}
+            <img src="/media/imagen/league/spell/{{abilitie_champion}}" alt="{{abilitie_champion}} ">
+            {% endif %} 
+        {% endfor %}
+        {% for passive_champion in img_champion_passives %}
+            {% if champion.name|cut:' ' in  passive_champion %}
+            <img src="/media/imagen/league/passive/{{passive_champion}}" alt="{{passive_champion}} ">
+            {% endif %} 
+        {% endfor %}
         <br> 
+        {% comment %} {% for spell in champion.spells%}
+        <p> {{spell.name}}</p>    {% endcomment %}
+    <h3>Skins</h3>    
         <div class="carousel">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
-            {% comment %} <ol class="carousel-indicators">
+            {% comment %} 
+            <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-            </ol> {% endcomment %}
+            </ol>  
+            {% endcomment %}
         
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
@@ -51,27 +48,18 @@
                     <h3>{{champion.name}}</h3>
                 </div>
                 </div>
-        
-                <div class="item">
-                    <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_1.jpg" alt="{{champion.name}} skin"   height="345">
-                <div class="carousel-caption">
-                    <h3>{{champion.name}}</h3>
-                </div>
-                </div>
-            
-                <div class="item">
-                    <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_2.jpg" alt="{{champion.name}} skin"   height="345">
-                <div class="carousel-caption">
-                    <h3>{{champion.name}}</h3>
-                </div>
-                </div>
-        
-                <div class="item">
-                    <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_3.jpg" alt="{{champion.name}} skin" height="345">
-                <div class="carousel-caption">
-                    <h3>{{champion.name}}</h3>
-                </div>
-                </div>
+                        
+                {% for skin_champion in img_champion_skin %}
+                    {% if champion.name|cut:' ' in  skin_champion %}
+                        <div class="item">
+                            <img src="/media/imagen/league/skins/{{skin_champion}}" alt="{{skin_champion}} skin"   height="345">
+                            <div class="carousel-caption">
+                                <h3>{{champion.name}}</h3>
+                            </div>
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+               
         
             </div>
         

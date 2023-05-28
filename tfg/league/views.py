@@ -1,10 +1,14 @@
 import requests
 from tfg.settings import CASSIOPEIA_DEFAULT_REGION
 from tfg.settings import CASSIOPEIA_RIOT_API_KEY
+from tfg.settings import MEDIA_ROOT
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from .models import Token, User as Usuario
+# imagenes
+import os
 # libreria del LOL
 from cassiopeia import Champion, Champions, Queue, Patch
 from django_cassiopeia import cassiopeia 
@@ -22,7 +26,6 @@ from django.core.paginator import Paginator
 # crea un temepleate con el mensaje y el nommbre del usuario
 # from django.template.loader import render_to_string
 
-
 from datetime import datetime, timedelta
 import uuid
 
@@ -30,6 +33,7 @@ from django.http import HttpResponse
 # tokens django
 # from rest_framework import generics
 # from .serializers import UserSerializer
+
 
 def registerPage(request):
     form = CreateUserForm()
@@ -143,8 +147,15 @@ def accountSettings(request):
 def detailChampion(request, champion_name):
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     runes = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
-       
-    context={'champion':champion, 'runes': runes,}
+    base_dir = MEDIA_ROOT
+    path_skins = str(base_dir) + "/imagen/league/skins" 
+    path_abilities = str(base_dir) + "/imagen/league/spell"
+    path_passive = str(base_dir) + "/imagen/league/passive"
+    img_skins = os.listdir(path_skins)  
+    img_abilities = os.listdir(path_abilities)
+    img_passives = os.listdir(path_passive)
+
+    context={'champion':champion, 'runes': runes,'img_champion_skin':img_skins, 'img_champion_abilities':img_abilities, 'img_champion_passives':img_passives}
     return render(request, 'league/detail_champion.html', context)
 
 def userView(request, user_name):
@@ -198,3 +209,6 @@ def tier_list(request):
     }
     return render(request, 'league/tier_list.html', context)
 
+# creando el error 404
+def error_404 (request, exception):
+    return render(request, '404.html')

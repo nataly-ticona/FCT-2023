@@ -2,6 +2,7 @@
 
 {% block link %}
     {%load static%} 
+    <script src="{% static 'league/js/index.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'league/styles/index.css' %}">
 {% endblock %}
 
@@ -12,9 +13,10 @@
     {% else %}
         <h1 class="user_hello">Hola {{request.user}} </h1>
     {% endif %}
+    
     <br>
     <div class="search_champion" id="search_champion">
-        <input type="text" name="" id="" placeholder="Busca un campeón">
+        <input type="text" name="" id="" placeholder="Busca un campeón" onkeypress="championKey()">
         <a>
             <svg class="search-icon" role="img">
                 <g class="search-path" fill="none" stroke="#848F91">
@@ -33,7 +35,8 @@
             {% endfor %}
        </div>
     
-        <div class="list_champions">
+        <div class="list_champions" id="list_champions">
+           
         {% for champion in champions %}
             <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
             <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
