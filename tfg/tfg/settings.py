@@ -57,7 +57,8 @@ ROOT_URLCONF = 'tfg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # el lector de templates lo pongo manualmente
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,14 +134,9 @@ CASSIOPEIA_PIPELINE = {   # small pipeine to get started
 
 # IMAGENES ROOT
 STATIC_URL = 'static/'
+# Defninimos la direccion, esto es para arreglar el error de no lectura de css y de js
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL='media/'
-
-# if DEBUG:
-#   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# else:
-#   STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # email registration validation

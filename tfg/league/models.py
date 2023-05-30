@@ -30,16 +30,23 @@ class Token(models.Model):
         return self.token
 
 # Revisar validacion de correo en los models
-# class Post(models.Model):
-#     user_post      = models.ForeignKey(User_Default, on_delete=models.CASCADE)
-#     champion       = models.CharField(max_length=200,unique=True)
-#     runes          = ArrayField(
-#                         ArrayField(
-#                             models.CharField(max_length=10, blank=True),
-#                             size=8,
-#                         ),
-#                         size=8,
-#                     )
-#     items
-#     summoner_spells
-#     habilities 
+class Post(models.Model):
+    user_post      = models.ForeignKey(User_Default, on_delete=models.CASCADE)
+    champion       = models.CharField(max_length=200,unique=True)
+    tittle_post    = models.CharField(max_length=200)
+    runes1         = models.CharField(max_length=200)
+    runes2         = models.CharField(max_length=200)
+    runes3         = models.CharField(max_length=200)
+    runes4         = models.CharField(max_length=200)
+    runes5         = models.CharField(max_length=200)
+    runes6         = models.CharField(max_length=200)
+    keystone       = models.CharField(max_length=200)
+    items1         = models.CharField(max_length=200)
+    items2         = models.CharField(max_length=200)
+    items3         = models.CharField(max_length=200)
+    items4         = models.CharField(max_length=200)
+    items5         = models.CharField(max_length=200)
+    items6         = models.CharField(max_length=200)
+    summoner_spells1 = models.CharField(max_length=200)
+    summoner_spells2 = models.CharField(max_length=200)
+    # habilities 

@@ -1,0 +1,57 @@
+{%extends 'tfg/base.html'%}  
+
+{% block link %}
+    {%load static%} 
+        <link rel="stylesheet" type="text/css" href="{% static 'league/styles/login.css' %}">
+{% endblock %}
+
+{%block title %}Account settings{% endblock %}
+{% block content %}
+    <div class="user_data">
+        <h1>Crear post</h1>
+        <pre>{{user2}}</pre>
+    </div>
+    <div class="form-post">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                    {{field.label}}
+                    {{field}} 
+                    <br>  
+            {% endfor %}
+            <br>
+            <input type="submit" value="Create Post">
+        </form>
+    </div>
+    <div class="errors">
+        {% for message in messages%}
+            <p>{{message}}</p>
+        {% endfor%}  
+    </div>  
+    {%comment%}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="rune1">
+            from       
+        </label>
+        <br>
+        <input type="submit" value="Acceder">
+    </form>
+        runes1         = models.CharField(max_length=200)
+        runes2         = models.CharField(max_length=200)
+        runes3         = models.CharField(max_length=200)
+        runes4         = models.CharField(max_length=200)
+        runes5         = models.CharField(max_length=200)
+        runes6         = models.CharField(max_length=200)
+        keystone       = models.CharField(max_length=200)
+        items1         = models.CharField(max_length=200)
+        items2         = models.CharField(max_length=200)
+        items3         = models.CharField(max_length=200)
+        items4         = models.CharField(max_length=200)
+        items5         = models.CharField(max_length=200)
+        items6         = models.CharField(max_length=200)
+        summoner_spells1 = models.CharField(max_length=200)
+        summoner_spells2 = models.CharField(max_length=200)
+    {%endcomment%}
+{% endblock %}
+

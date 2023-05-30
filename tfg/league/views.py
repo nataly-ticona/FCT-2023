@@ -6,7 +6,8 @@ from tfg.settings import MEDIA_ROOT
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
-from .models import Token, User as Usuario
+from .models import Token,Post, User as Usuario
+
 # imagenes
 import os
 # libreria del LOL
@@ -28,8 +29,8 @@ from django.core.paginator import Paginator
 
 from datetime import datetime, timedelta
 import uuid
-
-from django.http import HttpResponse
+# No almacenar datos al hacer un redirect
+from django.http import HttpResponse, HttpResponseRedirect
 # tokens django
 # from rest_framework import generics
 # from .serializers import UserSerializer
@@ -169,6 +170,9 @@ def myAccount(request):
     context={'user':user,}
     return render(request, 'accounts/my_account.html', context)
 
+# creando el error 404
+def error_404(request, exception):
+    return render(request, '404.html')
 
 def ranking(request):
     page_amount=25
@@ -209,6 +213,43 @@ def tier_list(request):
     }
     return render(request, 'league/tier_list.html', context)
 
-# creando el error 404
-def error_404 (request, exception):
-    return render(request, '404.html')
+@login_required(login_url='login')
+def createPost(request, champion_name):
+    user_data = request.user
+    user = User(username = user_data)
+    champion_name = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = CreatePost(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            data_form = form.save()
+            
+            # obtenemos datos y los limpiamos para no tener el codigo por defecto
+            Post.objects.create(
+                user_post = user,
+                champion = champion_name,
+                tittle_post = data_form.tittle_post,
+                runes1 = data_form.runes1,
+                runes2 = data_form.runes2,
+                runes3 = data_form.runes3,
+                runes4 = data_form.runes4,
+                runes5 = data_form.runes5,
+                runes6 = data_form.runes6,
+                keystone = data_form.keystone,
+                items1 = data_form.items1,
+                items2 = data_form.items2,
+                items3 = data_form.items3,
+                items4 = data_form.items4,
+                items5 = data_form.items5,
+                items6 = data_form.items6,
+                summoner_spells1 = data_form.summoner_spells1,
+                summoner_spells2 = data_form.summoner_spells2
+            )
+            return redirect('index')       
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = CreatePost()
+
+    return render(request, "accounts/createPost.html", {"form": form, 'user':user_data, 'user2':user})

@@ -15,7 +15,6 @@
     <h2>{{champion.name}}</h2>
     <h3>Habilidades</h3>
         {% for abilitie_champion in img_champion_abilities %}
-            
             {% if champion.name|cut:' ' in  abilitie_champion %}
             <img src="/media/imagen/league/spell/{{abilitie_champion}}" alt="{{abilitie_champion}} ">
             {% endif %} 
@@ -74,6 +73,7 @@
             </a>
             </div>
         </div>
+        <a href="{% url 'createPost' champion.name %}">Crear Post</a>
 </div>
 
 

@@ -11,7 +11,8 @@
 }
 .account_setting_image>img{
     width: 20rem;
-    float: right;
+    display: flex;
+    justify-content: end;
     border-radius: 50%;
 }
 .account_settings_form{
