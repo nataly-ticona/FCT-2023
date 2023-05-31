@@ -216,18 +216,19 @@ def tier_list(request):
 @login_required(login_url='login')
 def createPost(request, champion_name):
     user_data = request.user
-    user = User(username = user_data)
+    user = Usuario.objects.all
     champion_name = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
         form = CreatePost(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            data_form = form.save()
-            
+        #    form.save()
+        #    si ponemos form.save se guardan dos veces el dato
+            data_form =  form.save(commit=False)
             # obtenemos datos y los limpiamos para no tener el codigo por defecto
             Post.objects.create(
-                user_post = user,
+                user_post = user.id,
                 champion = champion_name,
                 tittle_post = data_form.tittle_post,
                 runes1 = data_form.runes1,
@@ -246,10 +247,15 @@ def createPost(request, champion_name):
                 summoner_spells1 = data_form.summoner_spells1,
                 summoner_spells2 = data_form.summoner_spells2
             )
-            return redirect('index')       
+            return redirect('posts')  
+                 
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = CreatePost()
 
-    return render(request, "accounts/createPost.html", {"form": form, 'user':user_data, 'user2':user})
+    return render(request, "accounts/createPost.html", {"form": form, 'user':user_data, 'users':user})
+
+def posts(request):
+    post = Post.objects.all
+    return render(request, 'accounts/post.html', {'posts':post})

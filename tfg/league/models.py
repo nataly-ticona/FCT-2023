@@ -31,8 +31,8 @@ class Token(models.Model):
 
 # Revisar validacion de correo en los models
 class Post(models.Model):
-    user_post      = models.ForeignKey(User_Default, on_delete=models.CASCADE)
-    champion       = models.CharField(max_length=200,unique=True)
+    user_post      = models.OneToOneField(User_Default,null=True,blank=True, on_delete=models.CASCADE)
+    champion       = models.CharField(max_length=200)
     tittle_post    = models.CharField(max_length=200)
     runes1         = models.CharField(max_length=200)
     runes2         = models.CharField(max_length=200)
@@ -50,3 +50,5 @@ class Post(models.Model):
     summoner_spells1 = models.CharField(max_length=200)
     summoner_spells2 = models.CharField(max_length=200)
     # habilities 
+    def __str__(self):
+        return self.tittle_post

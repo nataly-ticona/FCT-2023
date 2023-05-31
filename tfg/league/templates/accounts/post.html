@@ -1,0 +1,30 @@
+{%extends 'tfg/base.html'%}  
+
+{% block link %}
+    {%load static%} 
+    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/index.css' %}">
+{% endblock %}
+
+{%block title %}League of Leguends{% endblock %}
+{% block content %}
+    {% if  user.is_anonymous%}
+        <h1 class="user_hello">Inicia sesion</h1>
+    {% else %}
+        <h1 class="user_hello">Hola {{request.user}} </h1>
+    {% endif %}
+    <div class="list_champions" id="list_champions">
+        <p>{{user}}</p>
+        
+        
+        {% for post in posts %}
+            <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+            <span>{{post.user_post}}</span>
+            <span>{{post.champion}}</span>
+            <span>{{post.tittle_post}}</span>
+            <span>{{post.runes1}}</span>
+            <span>{{post.runes2}}</span>
+            <span>{{post.runes3}}</span>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}
