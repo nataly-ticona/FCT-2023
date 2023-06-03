@@ -23,6 +23,7 @@ main{
     font-family: var(--typography-texts);
     color: var(--text-color);
     font-size: var(--text-size);
+    min-height: calc(60vh);
 }
 
 h1,h2,h3,h4,h5, input[type="submit"]{
@@ -53,4 +54,14 @@ header>ul>li{
 header>ul>li>a{
     color: white;
     padding: 20px;
+}
+footer{
+    background-color: black;
+}
+.footer-container-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 0.2rem;
 }
