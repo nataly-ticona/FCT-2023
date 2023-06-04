@@ -12,7 +12,7 @@
     <div class="champion-profile">
         <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
         <h1>{{champion.name}}</h1>
-       
+        <!-- <p>{{champion.name}}</p> -->
     </div>
     <div class="champion-habilities">
         <h3>Habilidades</h3>
@@ -30,13 +30,17 @@
         {% comment %} {% for spell in champion.spells%}
         <p> {{spell.name}}</p>    {% endcomment %}
     </div>
-    <h3>Items</h3>
+    <br>
+    <div class="items">
+        <h3>Items</h3>
         {% for item_champion in img_champion_items %}
             <img src="/media/imagen/league/item/{{item_champion}}" alt="{{item_champion}}" height="65">
         {% endfor %}
-    <h3>Skins</h3>    
+    </div>
+    
+     <br>
     <div id="carouselExample" class="carousel slide">
-        
+        <h3>Skins</h3>  
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_0.jpg" alt="{{champion.name}} skin" class="d-block w-100" >
@@ -62,8 +66,9 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <br>
     <div class="button-post">
-        <a href="{% url 'createPost' champion.name %}">Crear Post</a>
+        <a href="{% url 'createPost' champion.name %}">Crear mi propia build</a>
     </div>
 </div>
 

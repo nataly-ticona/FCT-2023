@@ -7,6 +7,9 @@
 .champion-profile{
     width: 100%;
     display: flex;
+    justify-content: center;
+    gap:10px;
+    
 }
 .champion-habilities{
     width: 100%;

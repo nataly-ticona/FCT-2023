@@ -7,15 +7,9 @@
 
 {%block title %}League of Leguends{% endblock %}
 {% block content %}
-    {% if  user.is_anonymous%}
-        <h1 class="user_hello">Inicia sesion</h1>
-    {% else %}
-        <h1 class="user_hello">Hola {{request.user}} </h1>
-    {% endif %}
+
     <div class="list_champions" id="list_champions">
-        <pre>{{user}}</pre>
-        <pre>{{users}}</pre>
-        
+              
         
         {% for post in posts %}
             <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
