@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'league/styles/login.css' %}">
 {% endblock %}
 
-{%block title %}Account settings{% endblock %}
+{%block title %}Crear un post{% endblock %}
 {% block content %}
     <div class="user_data">
         <h1>Crear post</h1>
@@ -13,12 +13,57 @@
     <div class="form-post">
         <form action="" method="post">
             {% csrf_token %}
-            {% for field in form %}
+            <!-- {% for field in form %}
                     {{field.label}}
                     {{field}} 
                     <br>  
             {% endfor %}
-            <br>
+            <br> -->
+            <!-- {%for item in items%}
+                    
+            <img src="/media/imagen/league/item/{{item}}" alt="{{item}}">
+            
+            {% endfor %} -->
+            <div class="mb-3">
+                <label for="rune1" >Runa 1:</label>
+                <select name="rune1" id="rune1">
+                    {%for item in items%}
+                    <option value="{{item}}">
+                        <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" height="20" width="20">
+                    </option>
+                    {% endfor %}
+                </select>
+                <label for="rune2" >Runa 1:</label>
+                <select name="rune2" id="rune1">
+                    {%for item in items%}
+                    <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
+                    {% endfor %}
+                </select>
+                <label for="rune3" >Runa 1:</label>
+                <select name="rune1" id="rune1">
+                    {%for item in items%}
+                    <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
+                    {% endfor %}
+                </select>
+                <label for="rune4" >Runa 1:</label>
+                <select name="rune4" id="rune1">
+                    {%for item in items%}
+                    <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
+                    {% endfor %}
+                </select>
+                <label for="rune5" >Runa 1:</label>
+                <select name="rune5" id="rune1">
+                    {%for item in items%}
+                    <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
+                    {% endfor %}
+                </select>
+                <label for="rune6" >Runa 1:</label>
+                <select name="rune6" id="rune1">
+                    {%for item in items%}
+                    <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <input type="submit" value="Create Post">
         </form>
     </div>

@@ -1,15 +1,28 @@
 .champion{
     margin: 0 auto;
-    width: 80rem;
+    width: 80%;
     background-color: var(--background-divs);
     padding: 3rem;
 }
-.champion-header{
+.champion-profile{
+    width: 100%;
+    display: flex;
+}
+.champion-habilities{
+    width: 100%;
+    justify-content: center;
+}
+
+.button-post>a{
+    padding: 10px;
+    background-color: var(--background-color) ;
+}
+/* .champion-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-.champion-title{
+} */
+/* .champion-title{
     display: inline-block;
-}
+} */

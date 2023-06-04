@@ -41,6 +41,7 @@ def registerPage(request):
 
     if request.method =='POST':
         form = CreateUserForm(request.POST)
+        # validar que el email no se repite
         if form.is_valid():
             cuenta = form.save()
             
@@ -152,11 +153,19 @@ def detailChampion(request, champion_name):
     path_skins = str(base_dir) + "/imagen/league/skins" 
     path_abilities = str(base_dir) + "/imagen/league/spell"
     path_passive = str(base_dir) + "/imagen/league/passive"
+    path_item = str(base_dir) + "/imagen/league/item"
     img_skins = os.listdir(path_skins)  
     img_abilities = os.listdir(path_abilities)
     img_passives = os.listdir(path_passive)
+    img_items = os.listdir(path_item)
 
-    context={'champion':champion, 'runes': runes,'img_champion_skin':img_skins, 'img_champion_abilities':img_abilities, 'img_champion_passives':img_passives}
+    context={'champion':champion, 
+            'runes': runes,
+            'img_champion_skin':img_skins, 
+            'img_champion_abilities':img_abilities, 
+            'img_champion_passives':img_passives, 
+            'img_champion_items':img_items,
+            }
     return render(request, 'league/detail_champion.html', context)
 
 def userView(request, user_name):
@@ -216,19 +225,23 @@ def tier_list(request):
 @login_required(login_url='login')
 def createPost(request, champion_name):
     user_data = request.user
-    user = Usuario.objects.all
+    user = Usuario.objects.get(nb_user=user_data.username)
     champion_name = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
+    base_dir = MEDIA_ROOT
+    path_item = str(base_dir) + "/imagen/league/item" 
+    img_items = os.listdir(path_item)  
+    
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
         form = CreatePost(request.POST)
         # check whether it's valid:
         if form.is_valid():
         #    form.save()
-        #    si ponemos form.save se guardan dos veces el dato
+        #    si ponemos form.save se guardan dos
             data_form =  form.save(commit=False)
             # obtenemos datos y los limpiamos para no tener el codigo por defecto
             Post.objects.create(
-                user_post = user.id,
+                user_post = user,
                 champion = champion_name,
                 tittle_post = data_form.tittle_post,
                 runes1 = data_form.runes1,
@@ -248,14 +261,12 @@ def createPost(request, champion_name):
                 summoner_spells2 = data_form.summoner_spells2
             )
             return redirect('posts')  
-                 
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = CreatePost()
 
-    return render(request, "accounts/createPost.html", {"form": form, 'user':user_data, 'users':user})
+    return render(request, "accounts/createPost.html", {"form": form,'items':img_items})
 
 def posts(request):
     post = Post.objects.all
-    return render(request, 'accounts/post.html', {'posts':post})
+    return render(request, 'accounts/post.html', {'posts':post,})
