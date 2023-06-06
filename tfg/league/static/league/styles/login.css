@@ -1,6 +1,6 @@
 .user_data, .errors{
     margin: 0 auto;
-    width: 30rem;
+    width: 40rem;
     background-color: var(--background-divs);
     text-align: center;
     padding: 2rem ;
@@ -14,10 +14,11 @@
     background-color: rgba(255, 255, 255, 0.111);
     border: 0px;
     color: var(--headings-color);
+    margin: 0.5rem;
 }
 
 .user_data input[type="submit"]{
     margin-top: 1rem;
     padding: 10px;
-    background-color: var(--link-color);
+    background-color: var(--link-colorh2);
 }
