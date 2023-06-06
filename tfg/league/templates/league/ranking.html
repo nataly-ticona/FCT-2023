@@ -3,6 +3,7 @@
 {% block link %}
     {%load static%} 
     <link rel="stylesheet" type="text/css" href="{% static 'league/styles/ranking.css' %}">
+    <script src="{% static 'league/js/ranking.js' %}" defer></script>
 {% endblock %}
 
 {%block title %}League of Leguends{% endblock %}
@@ -60,6 +61,12 @@
     </div>
     {% endif %}
     <div class="ladder-items">
+        <div class="input-group mb-3 search-bar-ranking">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Search</span>
+            </div>
+            <input type="text" class="form-control" id="searchBarRanking" onkeyup="rankingSearch()" placeholder="Search summoner or rank" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
         <div class="ladder-header">
             <div class="ladder-item-ranking-header">
                 Rank

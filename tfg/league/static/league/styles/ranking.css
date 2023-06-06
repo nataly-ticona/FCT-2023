@@ -1,6 +1,6 @@
 .ladder{
     margin: 0 auto;
-    width: 80rem;
+    max-width: 80rem;
     background-color: var(--background-divs);
     padding: 1.5rem 3rem;
 }
@@ -67,4 +67,7 @@
 }
 .light-row{
     background-color: var(--background-color);
+}
+.search-bar-ranking{
+    max-width: 30%;
 }

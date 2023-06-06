@@ -23,7 +23,7 @@ main{
     font-family: var(--typography-texts);
     color: var(--text-color);
     font-size: var(--text-size);
-    min-height: calc(60vh);
+    min-height: calc(60vh - 3.4rem);
 }
 
 h1,h2,h3,h4,h5, input[type="submit"]{
@@ -56,7 +56,8 @@ header>ul>li>a{
     padding: 20px;
 }
 footer{
-    background-color: black;
+    background-color: var(--background-inputs);
+    margin-top: 1rem;
 }
 .footer-container-buttons{
     display: flex;
