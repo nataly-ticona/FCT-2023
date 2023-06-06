@@ -9,30 +9,32 @@
 {% block content %}
     <div class="user_data">
         <h1>Inicio de sesión</h1>
-        <form action="" method="POST">
+        <form class="form-login" action="" method="POST">
             {% csrf_token %}
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{request.GET.next}}">
             {% endif %}
-                <label for="username"> Nombre de usuario: 
+            <div class="container-input">
+                <label for="username"> Usuario 
+                </label>
                 <input type="text" name="username" id="username">
-            </label>
-            <br>
-            <label for="password"> Contraseña
+            </div>
+            <div class="container-input">
+                <label for="password"> Contraseña 
+                </label>
                 <input type="password" name="password" id="password">
-            </label>
-            <br>
+            </div>
             <label for="remember-me">Recordar usuario
                 <input type="checkbox" id="remember-me" name="remember-me">
             </label>
-            <br>
             <input type="submit" value="Acceder">
         </form>
     </div>
-
+    {% if messages %}
     <div class="errors">
         {% for message in messages%}
             <p>{{message}}</p>
         {% endfor%}  
     </div>  
+    {% endif %}
 {% endblock %}

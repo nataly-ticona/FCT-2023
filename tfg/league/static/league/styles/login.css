@@ -1,3 +1,6 @@
+h1{
+    padding-bottom: 2rem;
+}
 .user_data, .errors{
     margin: 0 auto;
     width: 40rem;
@@ -14,11 +17,33 @@
     background-color: rgba(255, 255, 255, 0.111);
     border: 0px;
     color: var(--headings-color);
-    margin: 0.5rem;
 }
 
 .user_data input[type="submit"]{
-    margin-top: 1rem;
     padding: 10px;
     background-color: var(--link-colorh2);
+}
+input[type="text"], input[type="password"], input[type="email"]{
+    padding: 0.5rem;
+}
+#remember-me{
+    width: 2rem;
+}
+.form-login, .form-register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap:1rem;
+}
+
+.container-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 60%;
+}
+.form-register>.container-input{
+    min-width: 80%;
 }

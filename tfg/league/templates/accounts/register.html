@@ -11,23 +11,24 @@
    
     <div class="user_data">
         <h1>Registro</h1>
-        <form action="" method="post">
+        <form class="form-register" action="" method="post">
             {% csrf_token %}
                 {% for field in form %}
-                    {{field.label}}
-                    {{field}} 
-                    <br>  
+                    <div class="container-input">
+                        {{field.label}}
+                        {{field}}
+                    </div>
                 {% endfor %}
-            <br>
             <input type="submit" value="Create User">
         </form>
     </div>
+    {% if messages %}
     <div class="errors">
         {% for message in messages%}
             <p>{{message}}</p>
         {% endfor%}  
     </div>  
-
+    {% endif %}
         
    
 {% endblock %}

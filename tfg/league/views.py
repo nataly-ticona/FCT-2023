@@ -62,18 +62,20 @@ def registerPage(request):
                 email_user=cuenta.email,
                 passwd_user = cuenta.password
             )
-            return redirect('login')          
+            # user = authenticate(request, username = cuenta.username, password = cuenta.password)
+            login(request, cuenta)
+            return redirect('index')          
     return render(request, 'accounts/register.html', {
         'form':form
     })
 
 def loginPage(request):
+    error=False
     if request.method == 'POST':
         username_login = request.POST.get('username')
         password_login = request.POST.get('password')
 
         user = authenticate(request, username = username_login, password = password_login)
-
         # el usuario es valido y redirecciona al index
         if user is not None:
             login(request, user)

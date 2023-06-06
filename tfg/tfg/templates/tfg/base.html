@@ -20,15 +20,20 @@
     <header>
         <ul>
             <li><a href="{% url 'index'%}"><img src="/media/imagen/users/Wiki_games_logo.png" alt="wiki games logo" height="20" class="logo-menu"></a></li>
+            {% if not  request.user.is_authenticated %}
             <li><a href="{% url 'register'%}">Registro</a></li>
             <li><a href="{% url 'login'%}">Log in</a></li>
-            <li><a href="{% url 'logout'%}">Log out</a></li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
             <li><a href="{% url 'accountsettings'%}">Account settings</a></li>
             <li><a href="{% url 'reset_password'%}">Reset my password</a></li>
+            {% endif %}
             <li><a href="{% url 'ranking'%}">Ladder</a></li>
             <li><a href="{% url 'tier_list'%}">Tier list</a></li>
+            {% if  request.user.is_authenticated %}
+            <li><a href="{% url 'logout'%}">Log out</a></li>
             <li><a href="{% url 'myaccount'%}"><img src="/media/imagen/users/profile_menu.png" alt="profile icon" height="20"></a></li>
-
+            {% endif %}
         </ul>
     </header>
     <main>
