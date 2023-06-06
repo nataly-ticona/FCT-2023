@@ -26,6 +26,10 @@ urlpatterns = [
     #Vista que nos confirma que nuestra contraseña se ha cambiado
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="accounts/reset_complete.html"), name='password_reset_complete'),
     #dirigirse a los setting y configuar la parte SMTP
-    path('createPost/<str:champion_name>/', views.createPost, name='createPost'),
+    path('create-post/<str:champion_name>/', views.createPost, name='createPost'),
     path('posts/', views.posts, name='posts'),
+    path('privacy-policy/', views.privacy_policy, name='privacyPolicy'),
+    path('cookies-policy/', views.cookies_policy, name='cookiesPolicy'),
+    path('legal_warning/', views.legal_warning, name='legalWarning'),
+
     ]

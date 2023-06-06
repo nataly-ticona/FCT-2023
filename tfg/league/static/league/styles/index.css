@@ -30,10 +30,15 @@ main{
     padding: 10px;
 }
 .users_list{
-    width: 10%;
+    width: 11rem;
+    padding: 1rem;
+}
+.users{
+    display: flex;
+    gap: 0.5rem;
 }
 
 .list_champions{
-    width: 90%;
+    width: 85rem;
 }
 

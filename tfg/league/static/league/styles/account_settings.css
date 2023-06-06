@@ -7,12 +7,12 @@
     padding: 2rem ;
 }
 .account_setting_image{
-    width: 40rem;
+    width: 30rem;
 }
 .account_setting_image>img{
-    width: 20rem;
+  width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     border-radius: 50%;
 }
 .account_settings_form{

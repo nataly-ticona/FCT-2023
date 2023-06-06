@@ -272,3 +272,12 @@ def createPost(request, champion_name):
 def posts(request):
     post = Post.objects.all
     return render(request, 'accounts/post.html', {'posts':post,})
+
+def privacy_policy(request):
+    return render(request, 'accounts/privacy_policy.html')
+
+def cookies_policy(request):
+    return render(request, 'accounts/cookies_policy.html')
+
+def legal_warning(request):
+    return render(request, 'accounts/legal_warning.html')

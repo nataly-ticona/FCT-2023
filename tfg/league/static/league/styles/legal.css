@@ -1,0 +1,6 @@
+.content{
+    width: 80%;
+    margin: 0 auto;
+    background-color: var(--background-divs);
+    padding: 2rem;;
+}
