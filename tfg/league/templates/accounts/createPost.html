@@ -13,58 +13,108 @@
     <div class="form-post">
         <form action="" method="post">
             {% csrf_token %}
-            <label for="items1">Item 1</label>
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items1" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-            </div>
-            {% endfor %}
-            <br>
-            <label for="items1">Item 2</label>
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items2" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-                
-            </div>
-            {% endfor %}
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items3" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-            </div>
-            {% endfor %}
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items4" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-            </div>
-            {% endfor %}
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items5" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-            </div>
-            {% endfor %}
-            <br>
-            {%for item in items%}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="items6" id="" value="{{item}}">
-                <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="25">
-            </div>
-            {% endfor %}
-            <br>
-                    
-                    
-
-               
-              
+            <label for="tittle_post">Titulo </label>
+            <input type="text" name="tittle_post" id="">
+            <div class="container-form">
+                <div class="container-item">
+                    <label for="items1">Item 1</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items1" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="items2">Item 2</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items2" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="items3">Item 3</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items3" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="items4">Item 4</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items4" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="items5">Item 5</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items5" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="items6">Item 6</label>
+                    <div class="content-input">
+                            {%for item in items%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="items6" id="" value="{{item}}">
+                                    <img src="/media/imagen/league/item/{{item}}" alt="{{item}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="summoner_spells1">Hechizo convocado 1</label>
+                    <div class="content-input">
+                            {%for spell in spells%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="summoner_spells1" id="" value="{{spell}}">
+                                    <img src="/media/imagen/league/summoner_spells/{{spell}}" alt="{{spell}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="summoner_spells2"> Hechizo convocado 2</label>
+                    <div class="content-input">
+                            {%for spell in spells%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="summoner_spells2" id="" value="{{spell}}">
+                                    <img src="/media/imagen/league/summoner_spells/{{spell}}" alt="{{spell}}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="container-item">
+                    <label for="keystone">Runa </label>
+                    <div class="content-input">
+                            {%for rune in keystone%}
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="keystone" id="" value="{{rune}}">
+                                    <img src="{{rune.image.url}}" alt="{{rune.name }}" width="35">
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
             </div>
             <input type="submit" value="Create Post">
         </form>
@@ -87,6 +137,7 @@
             <img src="/media/imagen/league/item/{{item}}" alt="{{item}}">
             
             {% endfor %} -->
+        tittle_post    = models.CharField(max_length=200)
         runes1         = models.CharField(max_length=200)
         runes2         = models.CharField(max_length=200)
         runes3         = models.CharField(max_length=200)

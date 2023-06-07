@@ -231,9 +231,12 @@ def createPost(request, champion_name):
     user_data = request.user
     user = Usuario.objects.get(nb_user=user_data.username)
     champion_name = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
+    keystone = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
     base_dir = MEDIA_ROOT
     path_item = str(base_dir) + "/imagen/league/item" 
+    path_spells = str(base_dir) + "/imagen/league/summoner_spells" 
     img_items = os.listdir(path_item)  
+    img_spells = os.listdir(path_spells)
     
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
@@ -269,7 +272,11 @@ def createPost(request, champion_name):
     else:
         form = CreatePost()
 
-    return render(request, "accounts/createPost.html", {"form": form,'items':img_items})
+    return render(request, "accounts/createPost.html", {"form": form,
+                                                        'items':img_items, 
+                                                        "spells":img_spells,
+                                                        'keystone':keystone[:len(keystone)-6],
+                                                        })
 
 def posts(request):
     post = Post.objects.all

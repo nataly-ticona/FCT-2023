@@ -2,12 +2,22 @@ main{
     width: 80rem;
     margin: 0 auto;
     background-color: var(--background-divs);
+    padding: 2rem;
+    text-align: center;
 }
 
-.form-post{
+.container-form{
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    padding: 1rem;
 }
-
+.content-input{
+    width: 100%;
+    height: 4.4rem;
+    overflow: scroll;
+}
 .form-check-inline>input{
     background-color: black;
 }
