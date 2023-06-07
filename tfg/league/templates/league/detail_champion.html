@@ -11,7 +11,10 @@
 <div class="champion">
     <div class="champion-profile">
         <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
-        <h1>{{champion.name}}</h1>
+        <h1>{{champion.name}}
+            <br>
+            {{title.text}}
+        </h1>
         <!-- <p>{{champion.name}}</p> -->
     </div>
     <div class="champion-habilities">
@@ -29,13 +32,41 @@
         <br> 
         {% comment %} {% for spell in champion.spells%}
         <p> {{spell.name}}</p>    {% endcomment %}
+        <p>Ataque: {{champion.info.attack}}/10</p>
+        <p>Defensa: {{champion.info.defense}}/10</p>
+        <p>Magia: {{champion.info.magic}}/10</p>
+        <p>Dificultad: {{champion.info.difficulty}}/10</p>
+        
+        <details open> 
+            <summary>Historia del personaje</summary>
+            {{lore.text}}
+        </details>
+        
     </div>
     <br>
     <div class="items">
         <h3>Items</h3>
-        {% for item_champion in img_champion_items %}
-            <img src="/media/imagen/league/item/{{item_champion}}" alt="{{item_champion}}" height="65">
-        {% endfor %}
+        <h2>ARAM</h2>
+        
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <h2>Grieta del invocador</h2>
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+        {% comment %} 
+            {% for item_champion in img_champion_items %}
+                
+                <img src="/media/imagen/league/item/{{item_champion|random }}" alt="{{item_champion}}" height="65">
+            {% endfor %}
+        {% endcomment %}
     </div>
     
      <br>

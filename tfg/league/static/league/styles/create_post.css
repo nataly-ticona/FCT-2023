@@ -1,0 +1,17 @@
+main{
+    width: 80rem;
+    margin: 0 auto;
+    background-color: var(--background-divs);
+}
+
+.form-post{
+    width: 100%;
+}
+
+.form-check-inline>input{
+    background-color: black;
+}
+.form-check-inline>input:checked{
+    background-color: purple;
+    border-color: palevioletred;
+}
