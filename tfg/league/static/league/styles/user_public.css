@@ -1,8 +1,20 @@
-.info_user{
-    width: 80%;   
+.user_admin{
+    width: 80%;
     margin: 0 auto;
+    background-color: var(--background-divs);
+    text-align: center;
+    padding: 2rem ;
 }
 
-.info_user >img{
-    width: 20rem;
+.data_user{
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.data_user>img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
 }

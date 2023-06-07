@@ -70,7 +70,6 @@ def registerPage(request):
     })
 
 def loginPage(request):
-    error=False
     if request.method == 'POST':
         username_login = request.POST.get('username')
         password_login = request.POST.get('password')
@@ -171,15 +170,16 @@ def detailChampion(request, champion_name):
     return render(request, 'league/detail_champion.html', context)
 
 def userView(request, user_name):
-    usuario = Usuario.objects.get(nb_user=user_name)
-    context = {'usuario': usuario}
+    currentUsername = request.user
+    user = Usuario.objects.get(nb_user=user_name)
+    posts=Post.objects.filter(user_post=user)
+    context = {
+        'user': user, 
+        'currentUser':currentUsername,
+        'posts':posts
+    }
     return render(request, 'accounts/user_public.html', context)
 
-@login_required(login_url='login')
-def myAccount(request):
-    user = request.user.user
-    context={'user':user,}
-    return render(request, 'accounts/my_account.html', context)
 
 # creando el error 404
 def error_404(request, exception):

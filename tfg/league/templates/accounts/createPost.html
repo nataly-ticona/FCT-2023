@@ -40,7 +40,7 @@
                     {% endfor %}
                 </select>
                 <label for="rune3" >Runa 1:</label>
-                <select name="rune1" id="rune1">
+                <select name="rune3" id="rune1">
                     {%for item in items%}
                     <option style="background-image:url(/media/imagen/league/item/{{item}});">{{item}}</option>
                     {% endfor %}
@@ -68,7 +68,7 @@
         </form>
     </div>
     <div class="errors">
-        {% for message in messages%}
+    {% for message in messages%}
             <p>{{message}}</p>
         {% endfor%}  
     </div>  

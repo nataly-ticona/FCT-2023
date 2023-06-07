@@ -10,7 +10,6 @@ urlpatterns = [
     path('logout/', views.logoutPage, name='logout'),
     path('private/', views.privatePage, name='private'),
     path('user/<str:user_name>', views.userView, name='user'),
-    path('myaccount/', views.myAccount, name='myaccount'),
     path('accountsettings/', views.accountSettings, name='accountsettings'),
     path('champion/<str:champion_name>/', views.detailChampion, name='detail'),
     path('ranking/', views.ranking, name='ranking'),

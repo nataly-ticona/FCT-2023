@@ -2,16 +2,31 @@
 
 {% block link %}
     {%load static%} 
-        <link rel="stylesheet" type="text/css" href="{% static 'league/user_public.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'league/styles/user_public.css' %}">
 {% endblock %}
 
-{%block title %} {{usuario.nb_user}} {% endblock %}
+{%block title %} {{user.nb_user}} {% endblock %}
 {% block content %}
-    <div class="info_user">
-        <img src="{{usuario.photo_user.url}}" alt="{{usuario.nb_user}} ">
-        <span>{{usuario.nb_user}}</span>
+    <div class="user_admin">
+        <div class="data_user">
+            <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
+            <div class="data">
+                <h2>Username: {{user.nb_user}}</h2>
+                <h4>Nickname: {{user.nick_name_user}}</h4>
+                <p>Date joined: {{user.date_joined_user}}</p>
+               
+                {% if currentUser.user == user %}
+                <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    <div class="post">
-
+    <div class="posts_list">
+        {% for post in posts %}
+            <div class="post">
+                {{post.user_post.nb_user}}
+                {{post.tittle_post}}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
