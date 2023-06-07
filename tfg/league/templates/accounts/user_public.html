@@ -17,6 +17,9 @@
                
                 {% if currentUser.user == user %}
                 <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+                
+                <a href="{% url 'logout'%}">Log out</a>
+                <a href="{% url 'reset_password'%}">Reset my password</a>
                 {% endif %}
             </div>
         </div>

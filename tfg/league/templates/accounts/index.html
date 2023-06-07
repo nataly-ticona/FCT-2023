@@ -32,7 +32,9 @@
             <div class="users">
                 {% for user in users %}
                 <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
-                    <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40">
+                    <a href="{% url 'user' user.nb_user %}">
+                        <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40">
+                    </a>
                 {% endfor %}
             </div>
        </div>

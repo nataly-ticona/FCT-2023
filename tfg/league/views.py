@@ -34,10 +34,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 # tokens django
 # from rest_framework import generics
 # from .serializers import UserSerializer
-# traductor de ingles a español
-from googletrans import Translator
-
-
 
 
 def registerPage(request):
@@ -152,13 +148,8 @@ def accountSettings(request):
     return render(request, 'accounts/account_settings.html', context)
 
 def detailChampion(request, champion_name):
-    translator = Translator()
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     runes = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
-    lore = translator.translate(champion.lore, dest='es')
-    titulo = translator.translate(champion.title, dest='es')
-
-
     base_dir = MEDIA_ROOT
     path_skins = str(base_dir) + "/imagen/league/skins" 
     path_abilities = str(base_dir) + "/imagen/league/spell"
@@ -170,8 +161,6 @@ def detailChampion(request, champion_name):
     img_items = os.listdir(path_item)
 
     context={'champion':champion, 
-             'lore':lore,
-             'title':titulo,
             'runes': runes,
             'img_champion_skin':img_skins, 
             'img_champion_abilities':img_abilities, 
@@ -203,10 +192,12 @@ def ranking(request):
     if response.status_code == 200:
         challenger =response.json()['entries']
         challenger.sort(key=extract_time, reverse=True)
-        paginator = Paginator(challenger, page_amount)  # Show 25 values per page.
+        paginator = Paginator(challenger, page_amount)
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
         best = challenger[0:3]
+    else:   
+        return render(request, '404.html')
     return render(request, 'league/ranking.html',{
         "challenger":challenger,
         "page_obj":page_obj,

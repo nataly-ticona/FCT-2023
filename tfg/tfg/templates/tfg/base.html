@@ -25,14 +25,8 @@
             <li><a href="{% url 'register'%}">Registro</a></li>
             <li><a href="{% url 'login'%}">Log in</a></li>
             {% endif %}
-            {% if request.user.is_authenticated %}
-            <!-- <li><a href="{% url 'accountsettings'%}">Account settings</a></li> -->
-            <li><a href="{% url 'reset_password'%}">Reset my password</a></li>
-            {% endif %}
             <li><a href="{% url 'ranking'%}">Ladder</a></li>
-            <li><a href="{% url 'tier_list'%}">Tier list</a></li>
             {% if  request.user.is_authenticated %}
-            <li><a href="{% url 'logout'%}">Log out</a></li>
             <li><a href="{% url 'user' request.user.user.nb_user %}"><img src="/media/imagen/users/profile_menu.png" alt="profile icon" height="20"></a></li>
             {% endif %}
         </ul>
@@ -48,37 +42,23 @@
                         <h6 class="text-uppercase fw-bold mb-4">
                             Nombred enoseque
                         </h6>
-                        <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit eius deleniti veritatis dolorum obcaecati voluptatem ratione repellat nisi, sit similique autem inventore accusamus in nostrum! Harum itaque nobis totam amet.
-                        </p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit eius deleniti veritatis dolorum obcaecati voluptatem ratione repellat nisi, sit similique autem inventore accusamus in nostrum! Harum itaque nobis totam amet.</p>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">
-                        Links rápidos
+                            Links rápidos
                         </h6>
-                        <p>
-                        <a href="#!" class="text-reset">Link1</a>
-                        </p>
-                        <p>
-                        <a href="#!" class="text-reset">Link2</a>
-                        </p>
-                        <p>
-                        <a href="#!" class="text-reset">Link3</a>
-                        </p>
+                        <p><a href="#!" class="text-reset">Link1</a></p>
+                        <p><a href="#!" class="text-reset">Link2</a></p>
+                        <p><a href="#!" class="text-reset">Link3</a></p>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">
                         Otras cosas
                         </h6>
-                        <p>
-                        <a href="{% url 'privacyPolicy'%}" class="text-reset">Política de privacidad</a>
-                        </p>
-                        <p>
-                        <a href="{% url 'cookiesPolicy' %}" class="text-reset">Política de cookies</a>
-                        </p>
-                        <p>
-                        <a href="{% url 'legalWarning' %}" class="text-reset">Aviso legal</a>
-                        </p>
+                        <p><a href="{% url 'privacyPolicy'%}" class="text-reset">Política de privacidad</a></p>
+                        <p><a href="{% url 'cookiesPolicy' %}" class="text-reset">Política de cookies</a></p>
+                        <p><a href="{% url 'legalWarning' %}" class="text-reset">Aviso legal</a></p>
                     </div>
                 </div>
             </div>
