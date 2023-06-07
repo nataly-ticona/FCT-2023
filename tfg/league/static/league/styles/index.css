@@ -9,36 +9,46 @@ main{
 
 .search_champion{
     display: flex;
-    justify-content:center ;
+    justify-content:start ;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
     margin: 0 auto;
-    height: 3rem;
+    height: 5rem;
     background-color: var(--background-divs);
-    padding: 10px 0 0 0;
+    padding: 1rem;
 }
-.search_champion > input{
-    width: 70% ;
+.search_champion>input{
+    padding: 0.5rem;
 }
-.search_champion >a{
-    width: 20%;
-}
-
 .content{
     margin: 0 auto;
-    display: flex;
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 20% 80%;
     background-color: var(--background-divs);
-    padding: 10px;
 }
 .users_list{
-    width: 11rem;
-    padding: 1rem;
+    /* width: 11rem; */
+    padding: 0 1rem;
 }
 .users{
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
+    /*
+    width: 100%;
+    height: 80%; */
 }
-
+.users>img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
 .list_champions{
-    width: 85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    /* width: 85rem; */
 }
 

@@ -13,38 +13,38 @@
     {% else %}
         <h1 class="user_hello">Hola {{request.user}} </h1>
     {% endif %}
-    
-    <br>
-    <!-- <div class="search_champion" id="search_champion">
-        <input type="text" name="" id="championKey" placeholder="Busca un campeón" onkeyup="championKey()">
-        <a>
+    <div class="search_champion" id="search_champion">
+        <input type="text" name="" id="championKey" placeholder="Busca un campeón" onkeyup="championSearch()">
+        <!-- <a>
             <svg class="search-icon" role="img">
                 <g class="search-path" fill="none" stroke="#848F91">
                     <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/>
                     <circle cx="8" cy="8" r="7"/>
                 </g>
             </svg>
-          </a>
-    </div> -->
+        </a> -->
+        <i class="fas fa-search fa-spin fa-lg"></i>
+    </div>
     <div class="content">
-        
+
         <div class="users_list">
             <h2>Nuestra comunidad</h2>
-           <div class="users">
+            <div class="users">
                 {% for user in users %}
                 <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
                     <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40">
                 {% endfor %}
-           </div>
+            </div>
        </div>
     
         <div class="list_champions" id="list_champions">
-            <div class="champions">
             {% for champion in champions %}
+            <div class="champion">
                 <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
                 <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
-            {% endfor %}
+                <input type="hidden" name="champion" value="{{champion.name}}">
             </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
