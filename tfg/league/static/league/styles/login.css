@@ -42,8 +42,11 @@ input[type="text"], input[type="password"], input[type="email"]{
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    min-width: 60%;
+    min-width: 70%;
 }
 .form-register>.container-input{
-    min-width: 80%;
+    width: 80%;
+}
+label{
+    text-align: left;
 }

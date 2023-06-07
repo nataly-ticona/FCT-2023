@@ -15,7 +15,9 @@
             {% csrf_token %}
                 {% for field in form %}
                     <div class="container-input">
-                        {{field.label}}
+                       
+                        <label for=" {{field.label}}">  {{field.label}} 
+                        </label>
                         {{field}}
                     </div>
                 {% endfor %}
