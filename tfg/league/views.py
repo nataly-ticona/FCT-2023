@@ -274,7 +274,8 @@ def createPost(request, champion_name):
 
 def posts(request):
     post = Post.objects.all
-    return render(request, 'accounts/post.html', {'posts':post,})
+    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
+    return render(request, 'accounts/post.html', {'posts':post,'champions':champions})
 
 def privacy_policy(request):
     return render(request, 'accounts/privacy_policy.html')
