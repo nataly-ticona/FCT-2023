@@ -34,7 +34,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 # tokens django
 # from rest_framework import generics
 # from .serializers import UserSerializer
-
+# traduccion de textos
+from googletrans import Translator
 
 def registerPage(request):
     form = CreateUserForm()
@@ -148,9 +149,11 @@ def accountSettings(request):
     return render(request, 'accounts/account_settings.html', context)
 
 def detailChampion(request, champion_name):
+    translator = Translator()
     champion = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     runes = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
     base_dir = MEDIA_ROOT
+    
     path_skins = str(base_dir) + "/imagen/league/skins" 
     path_abilities = str(base_dir) + "/imagen/league/spell"
     path_passive = str(base_dir) + "/imagen/league/passive"
@@ -159,13 +162,19 @@ def detailChampion(request, champion_name):
     img_abilities = os.listdir(path_abilities)
     img_passives = os.listdir(path_passive)
     img_items = os.listdir(path_item)
-
+    lore = translator.translate(champion.lore, dest='es')
+    title = translator.translate(champion.title, dest='es')
+    post_champion = Post.objects.filter(champion=champion_name)
+    
     context={'champion':champion, 
             'runes': runes,
             'img_champion_skin':img_skins, 
             'img_champion_abilities':img_abilities, 
             'img_champion_passives':img_passives, 
             'img_champion_items':img_items,
+            'lore':lore,
+            'title':title,
+            'posts_champion':post_champion,
             }
     return render(request, 'league/detail_champion.html', context)
 
@@ -230,7 +239,6 @@ def tier_list(request):
 def createPost(request, champion_name):
     user_data = request.user
     user = Usuario.objects.get(nb_user=user_data.username)
-    champion_name = Champion(name=champion_name, region=CASSIOPEIA_DEFAULT_REGION)
     keystone = cassiopeia.Runes(region=CASSIOPEIA_DEFAULT_REGION).keystones
     base_dir = MEDIA_ROOT
     path_item = str(base_dir) + "/imagen/league/item" 

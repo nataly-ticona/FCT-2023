@@ -31,7 +31,7 @@ class Token(models.Model):
 
 # Revisar validacion de correo en los models
 class Post(models.Model):
-    user_post      = models.OneToOneField(User,null=True,blank=True, on_delete=models.CASCADE)
+    user_post      = models.ForeignKey(User,null=True, on_delete=models.CASCADE)
     champion       = models.CharField(max_length=200)
     tittle_post    = models.CharField(max_length=200)
     keystone       = models.CharField(max_length=200)

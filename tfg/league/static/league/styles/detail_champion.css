@@ -7,15 +7,18 @@
 .champion-profile{
     width: 100%;
     display: flex;
-    justify-content: center;
     gap:10px;
+    background-color: red;
     
 }
 .champion-habilities{
     width: 100%;
     justify-content: center;
+    background-color: blue;
 }
-
+.champion-items{
+    background-color: palegreen;
+}
 .button-post>a{
     padding: 10px;
     background-color: var(--background-color) ;

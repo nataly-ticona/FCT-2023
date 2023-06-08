@@ -13,13 +13,12 @@
         <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
         <h1>{{champion.name}}
             <br>
-            {{title.text}}
+            "{{title.text}}"
         </h1>
-        <!-- <p>{{champion.name}}</p> -->
     </div>
     <div class="champion-habilities">
-        <h3>Habilidades</h3>
-        {% for abilitie_champion in img_champion_abilities %}
+        <div class="champion_info">
+            {% for abilitie_champion in img_champion_abilities %}
             {% if champion.name|cut:' ' in  abilitie_champion %}
             <img src="/media/imagen/league/spell/{{abilitie_champion}}" alt="{{abilitie_champion}} ">
             {% endif %} 
@@ -29,9 +28,7 @@
             <img src="/media/imagen/league/passive/{{passive_champion}}" alt="{{passive_champion}} ">
             {% endif %} 
         {% endfor %}
-        <br> 
-        {% comment %} {% for spell in champion.spells%}
-        <p> {{spell.name}}</p>    {% endcomment %}
+        </div>
         <p>Ataque: {{champion.info.attack}}/10</p>
         <p>Defensa: {{champion.info.defense}}/10</p>
         <p>Magia: {{champion.info.magic}}/10</p>
@@ -43,17 +40,15 @@
         </details>
         
     </div>
-    <br>
-    <div class="items">
-        <h3>Items</h3>
+    <div class="champion-items">
         <h2>ARAM</h2>
-        
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
+
         <h2>Grieta del invocador</h2>
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
@@ -61,12 +56,6 @@
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
         <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        {% comment %} 
-            {% for item_champion in img_champion_items %}
-                
-                <img src="/media/imagen/league/item/{{item_champion|random }}" alt="{{item_champion}}" height="65">
-            {% endfor %}
-        {% endcomment %}
     </div>
     
      <br>
@@ -101,13 +90,21 @@
     <div class="button-post">
         <a href="{% url 'createPost' champion.name %}">Crear mi propia build</a>
     </div>
+    {% for post in posts_champion%}
+        <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+            <img src="{{champion.image.url}}" alt="{{champion.name}} ">
+            <span>{{post.user_post}}</span>
+            <span>{{post.tittle_post}}</span>
+            <img src="/media/imagen/league/item/{{post.items1}}" alt="" width="40">
+            <img src="/media/imagen/league/item/{{post.items2}}" alt="" width="40">
+            <img src="/media/imagen/league/item/{{post.items3}}" alt="" width="40">
+            <img src="/media/imagen/league/item/{{post.items4}}" alt="" width="40">
+            <img src="/media/imagen/league/item/{{post.items5}}" alt="" width="40">
+            <img src="/media/imagen/league/item/{{post.items6}}" alt="" width="40">
+            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="">
+            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="">
+            <img src="{{post.keystone}}" alt="" width="90">
+    {% endfor %}
 </div>
-
-
-{% comment %} <br>
-{% for rune in runes%}
-    <p>{{rune.name }}</p>
-    <img src="{{rune.image.url}}" alt="{{rune.name }}">
-{%endfor%} {% endcomment %}
 
 {% endblock %}

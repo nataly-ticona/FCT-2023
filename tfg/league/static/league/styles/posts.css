@@ -1,0 +1,33 @@
+main{
+    width: 60%;
+    margin: 0 auto;
+    background-color: var(--background-divs);
+    padding-top:1rem ;
+    padding-bottom:1rem ;
+    text-align: center;
+}
+
+.post{
+    margin:0 auto;
+    width: fit-content;
+}
+
+h2{
+    padding-left: 6px;
+}
+
+.header-post{
+    margin-top:1rem ;
+    padding: 1rem 1rem 0rem 1rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--background-divs2);
+}
+.content-post{
+    padding: 1rem;
+    background-color: var(--background-divs2);
+}
+.item{
+    width: 4rem;
+    height: 4rem;
+}

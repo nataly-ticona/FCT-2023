@@ -2,41 +2,39 @@
 
 {% block link %}
     {%load static%} 
-    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/posts.css' %}">
 {% endblock %}
 
 {%block title %}League of Leguends{% endblock %}
 {% block content %}
+    <h1>Builds de la comunidad</h1>
+    {% for post in posts %}
+        <div class="post">
+            <div class="header-post">
+                <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+                    {% for champion in champions %}
+                        {% if champion.name ==  post.champion %}
+                            <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}" class="item"></a>
+                        {% endif %} 
+                    {% endfor %}
+                <h2>{{post.tittle_post}}</h2>
+            </div>
+            <div class="content-post">
+                <a href="{% url 'user' post.user_post.nb_user %}">
+                    <img src="/media/{{post.user_post.photo_user}}" alt="{{post.user_post.nb_user}}" class="item">
+                </a>
+                <img src="/media/imagen/league/item/{{post.items1}}" alt="{{post.items1}}" class="item">
+                <img src="/media/imagen/league/item/{{post.items2}}" alt="{{post.items2}}" class="item">
+                <img src="/media/imagen/league/item/{{post.items3}}" alt="{{post.items3}}" class="item">
+                <img src="/media/imagen/league/item/{{post.items4}}" alt="{{post.items4}}" class="item">
+                <img src="/media/imagen/league/item/{{post.items5}}" alt="{{post.items5}}" class="item">
+                <img src="/media/imagen/league/item/{{post.items6}}" alt="{{post.items6}}" class="item">
+                <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="{{post.summoner_spells1}}" class="item">
+                <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="{{post.summoner_spells2}}" class="item">
+                <img src="{{post.keystone}}" alt="{{post.keystone}}" class="item">
+            </div>
+           
+        </div>    
+    {% endfor %}    
 
-    <div>
-              
-        
-        {% for post in posts %}
-            <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
-            
-            <span>{{post.user_post}}</span>
-            <br>
-            <span>{{post.tittle_post}}</span>
-            <br>
-            <img src="/media/imagen/league/item/{{post.items1}}" alt="">
-            <img src="/media/imagen/league/item/{{post.items2}}" alt="">
-            <img src="/media/imagen/league/item/{{post.items3}}" alt="">
-            <img src="/media/imagen/league/item/{{post.items4}}" alt="">
-            <img src="/media/imagen/league/item/{{post.items5}}" alt="">
-            <img src="/media/imagen/league/item/{{post.items6}}" alt="">
-            <p>{{post.champion}}</p>
-            {% for champion in champions %}
-                {% if champion.name|cut:' ' in  post.champion.name %}
-                <img src="{{champion.image.url}}" alt="{{champion.name}} ">
-               
-                {% endif %} 
-         
-            {% endfor %}
-            
-            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="">
-            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="">
-            <img src="{{post.keystone}}" alt="" width="90">
-            <br>
-        {% endfor %}
-    </div>
 {% endblock %}
