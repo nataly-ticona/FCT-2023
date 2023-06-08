@@ -2,10 +2,10 @@
 {%block title %}{{champion.name}} guide{% endblock %}
 {% block link %}
     {%load static%} 
-    <link rel="stylesheet" type="text/css" href="{% static 'league/styles/detail_champion.css' %}">
-{% endblock %}
-
-
+        <link rel="stylesheet" type="text/css" href="{% static 'league/styles/detail_champion.css' %}">
+        <script src="{% static 'league/js/detail_champion.js' %}" defer></script>
+        <script src="https://cdn.canvasjs.com/canvasjs.min.js" defer></script>
+    {% endblock %}
 {% block content %}
 
 <div class="champion">
@@ -29,6 +29,13 @@
             {% endif %} 
         {% endfor %}
         </div>
+        <div class="data-chart">
+            <input type="hidden" name="attack" value="{{champion.info.attack}}">
+            <input type="hidden" name="defense" value="{{champion.info.defense}}">
+            <input type="hidden" name="magic" value="{{champion.info.magic}}">
+            <input type="hidden" name="difficulty" value="{{champion.info.difficulty}}">
+        </div>
+        
         <p>Ataque: {{champion.info.attack}}/10</p>
         <p>Defensa: {{champion.info.defense}}/10</p>
         <p>Magia: {{champion.info.magic}}/10</p>
@@ -38,7 +45,7 @@
             <summary>Historia del personaje</summary>
             {{lore.text}}
         </details>
-        
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     </div>
     <div class="champion-items">
         <h2>ARAM</h2>

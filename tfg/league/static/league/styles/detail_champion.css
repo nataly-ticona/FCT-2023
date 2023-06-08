@@ -19,16 +19,11 @@
 .champion-items{
     background-color: palegreen;
 }
+.canvasjs-chart-credit{
+    
+    display: hidden !important;
+}
 .button-post>a{
     padding: 10px;
     background-color: var(--background-color) ;
 }
-/* .champion-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-} */
-/* .champion-title{
-    display: inline-block;
-} */
