@@ -24,12 +24,34 @@
             </div>
         </div>
     </div>
+    {% if posts %}
     <div class="posts_list">
+        <h3>Posts de {{user.nb_user}}</h3>
         {% for post in posts %}
             <div class="post">
-                {{post.user_post.nb_user}}
-                {{post.tittle_post}}
-            </div>
+                <div class="header-post">
+                    <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
+                        {% for champion in champions %}
+                            {% if champion.name ==  post.champion %}
+                                <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}" class="item"></a>
+                            {% endif %} 
+                        {% endfor %}
+                    <h2>{{post.tittle_post}}</h2>
+                </div>
+                <div class="content-post">
+                    <img src="/media/imagen/league/item/{{post.items1}}" alt="{{post.items1}}" class="item">
+                    <img src="/media/imagen/league/item/{{post.items2}}" alt="{{post.items2}}" class="item">
+                    <img src="/media/imagen/league/item/{{post.items3}}" alt="{{post.items3}}" class="item">
+                    <img src="/media/imagen/league/item/{{post.items4}}" alt="{{post.items4}}" class="item">
+                    <img src="/media/imagen/league/item/{{post.items5}}" alt="{{post.items5}}" class="item">
+                    <img src="/media/imagen/league/item/{{post.items6}}" alt="{{post.items6}}" class="item">
+                    <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="{{post.summoner_spells1}}" class="item">
+                    <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="{{post.summoner_spells2}}" class="item">
+                    <img src="{{post.keystone}}" alt="{{post.keystone}}" class="item">
+                </div>
+            
+            </div>    
         {% endfor %}
     </div>
+    {% endif %}
 {% endblock %}

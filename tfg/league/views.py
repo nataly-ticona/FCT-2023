@@ -179,10 +179,12 @@ def userView(request, user_name):
     currentUsername = request.user
     user = Usuario.objects.get(nb_user=user_name)
     posts=Post.objects.filter(user_post=user)
+    champions = Champions(region=CASSIOPEIA_DEFAULT_REGION)
     context = {
         'user': user, 
         'currentUser':currentUsername,
-        'posts':posts
+        'posts':posts,
+        'champions':champions
     }
     return render(request, 'accounts/user_public.html', context)
 

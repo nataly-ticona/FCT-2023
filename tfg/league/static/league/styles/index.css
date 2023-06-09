@@ -14,7 +14,7 @@ main{
 
 .search_champion{
     display: flex;
-    justify-content:center ;
+    justify-content:end ;
     align-items: center;
     gap: 1rem;
     width: 100%;
@@ -23,7 +23,7 @@ main{
     padding: 1rem;
 }
 .search_champion>input{
-    width: 60rem;
+    width: calc(85% - 3rem);
     border-radius: 30px;
     padding: 0.5rem;
     background-color: var(--background-divs2);

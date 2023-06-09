@@ -1,6 +1,12 @@
-.user_admin{
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 1rem;
+}
+.user_admin, .posts_list{
     width: 80%;
-    margin: 0 auto;
     background-color: var(--background-divs);
     text-align: center;
     padding: 2rem ;
@@ -17,4 +23,34 @@
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+}
+.posts_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 1rem;
+}
+.post{
+    width: fit-content;
+}
+
+h2{
+    padding-left: 6px;
+}
+
+.header-post{
+    margin-top:1rem ;
+    padding: 1rem 1rem 0rem 1rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--background-divs2);
+}
+.content-post{
+    padding: 1rem;
+    background-color: var(--background-divs2);
+}
+.item{
+    width: 4rem;
+    height: 4rem;
 }
