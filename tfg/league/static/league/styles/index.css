@@ -1,54 +1,74 @@
-.user_hello{
-    text-align: center;
-}
 
 main{
     width: 80%;
     margin: 0 auto;
+    background-color: var(--background-divs);
+    border-radius: 30px;
+}
+
+.user_hello{
+    text-align: center;
+    font-weight: bold;
+    padding-top: 0.5 rem;
 }
 
 .search_champion{
     display: flex;
-    justify-content:start ;
+    justify-content:center ;
     align-items: center;
     gap: 1rem;
     width: 100%;
     margin: 0 auto;
     height: 5rem;
-    background-color: var(--background-divs);
     padding: 1rem;
 }
 .search_champion>input{
+    width: 60rem;
+    border-radius: 30px;
     padding: 0.5rem;
+    background-color: var(--background-divs2);
+    color: var(--headings-color);
+    border-color: var(--link-colorh2);
 }
+.search_champion>input:focus{
+    border-color: var(--link-colorh2);
+    outline: none !important;
+    box-shadow: none;
+}
+
 .content{
     margin: 0 auto;
     width: 100%;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 20% 80%;
-    background-color: var(--background-divs);
+    grid-template-columns: 15% 85%;
+}
+
+.title-users{
+    border-bottom: 1px solid var(--headings-color);
 }
 .users_list{
-    /* width: 11rem; */
-    padding: 0 1rem;
+    padding: 1rem;
+    margin-left: 1rem;
+    background-color: var(--background-divs2);
+    border-radius: 30px;
+    text-align: center;
+    height: fit-content;
 }
 .users{
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    /*
-    width: 100%;
-    height: 80%; */
+    
 }
-.users>img{
+.users>img, .users>a>img{
     width: 2.5rem;
     height: 2.5rem;
+    border-radius: 50%;
 }
 .list_champions{
     display: flex;
     flex-wrap: wrap;
     gap: 0.2rem;
-    /* width: 85rem; */
 }
 

@@ -5,26 +5,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'league/styles/index.css' %}">
     <script src="{% static 'league/js/index.js' %}" defer></script>
 {% endblock %}
-
 {%block title %}League of Leguends{% endblock %}
 {% block content %}
     {% if  user.is_anonymous%}
-        <h1 class="user_hello">Inicia sesion</h1>
+        <h1 class="user_hello">Inicia sesión</h1>
     {% else %}
-        <h1 class="user_hello">Hola {{request.user}} </h1>
+        <h1 class="user_hello"> ¡Hola {{request.user}}!</h1>
     {% endif %}
     <div class="search_champion" id="search_champion">
-        <input type="text" name="" id="championKey" placeholder="Busca un campeón" onkeyup="championSearch()">
-       
+        <input type="text" name="" id="championKey" placeholder="Busca a tu campeón" onkeyup="championSearch()">
         <i class="fas fa-search fa-spin fa-lg"></i>
     </div>
     <div class="content">
-
         <div class="users_list">
-            <h2>Nuestra comunidad</h2>
+            <h2 class="title-users">Últimos WikGi</h2>
             <div class="users">
                 {% for user in users %}
-                <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
                     <a href="{% url 'user' user.nb_user %}">
                         <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40">
                     </a>
@@ -35,7 +31,6 @@
         <div class="list_champions" id="list_champions">
             {% for champion in champions %}
             <div class="champion">
-                <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
                 <a href="{% url 'detail' champion.name %}"><img src="{{champion.image.url}}" alt="{{champion.name}}"></a>
                 <input type="hidden" name="champion" value="{{champion.name}}">
             </div>

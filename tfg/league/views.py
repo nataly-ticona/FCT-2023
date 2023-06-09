@@ -45,10 +45,7 @@ def registerPage(request):
         # validar que el email no se repite
         if form.is_valid():
             cuenta = form.save()
-            
-            # obtenemos datos y los limpiamos para no tener el codigo por defecto
-            nombre_user = form.cleaned_data.get('username')            
-            messages.success(request, 'Has creado un usuario '+ nombre_user + '! :D')
+                   
             email = EmailMessage(
                 'Bienvenido a Wikigames!', 
                 'Gracias por confiar en esta conmunidad',
