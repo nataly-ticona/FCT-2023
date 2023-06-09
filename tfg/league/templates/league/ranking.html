@@ -91,7 +91,7 @@
                     {{page_obj.number|add:-1|mul:page_amount|add:forloop.counter}}
                 </div>
                 <div class="ladder-item-summoner">
-                    {{player.summonerName}}
+                    <a href="{% url 'detail_summoner' player.summonerName %}">{{player.summonerName}}</a>
                 </div>
                 <div class="ladder-item-lp">
                     {{player.leaguePoints}}
@@ -107,7 +107,7 @@
                     {{page_obj.number|add:-1|mul:page_amount|add:forloop.counter}}
                 </div>
                 <div class="ladder-item-summoner">
-                    {{player.summonerName}}
+                    <a href="{% url 'detail_summoner' player.summonerName %}">{{player.summonerName}}</a>
                 </div>
                 <div class="ladder-item-lp">
                     {{player.leaguePoints}}

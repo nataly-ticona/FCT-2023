@@ -31,4 +31,6 @@ urlpatterns = [
     path('cookies-policy/', views.cookies_policy, name='cookiesPolicy'),
     path('legal_warning/', views.legal_warning, name='legalWarning'),
 
+    #Listado de summoners
+    path('summoner/<str:summoner_name>/',views.summoners_list, name='detail_summoner'),
     ]

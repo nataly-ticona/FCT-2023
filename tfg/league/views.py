@@ -11,7 +11,7 @@ from .models import Token,Post, User as Usuario
 # imagenes
 import os
 # libreria del LOL
-from cassiopeia import Champion, Champions, Queue, Patch
+from cassiopeia import Champion, Champions, Queue, Patch, Summoner, Rank, Tier, Division
 from django_cassiopeia import cassiopeia 
 # mensajes de aviso (usuario creado, documento eliminado, etc)
 from django.contrib import messages
@@ -293,3 +293,17 @@ def cookies_policy(request):
 
 def legal_warning(request):
     return render(request, 'accounts/legal_warning.html')
+
+
+def summoners_list(request,summoner_name):
+    summoner = Summoner(name=summoner_name,region=CASSIOPEIA_DEFAULT_REGION)
+    queue_summoner = Queue.ranked_flex_fives
+    rank_summoner = summoner.match_history(start_time="0",end_time="20", puuid=summoner.puuid,continent="europe")
+    rank_summ = Rank()
+    context = {
+        'rank': rank_summoner,
+        'queue': queue_summoner,
+        'summoner':summoner,
+    }
+
+    return render(request, 'league/detail_summoner.html',context)

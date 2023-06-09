@@ -1,0 +1,15 @@
+{%extends 'tfg/base.html'%}  
+{%block title %}{{summoner.name}} guide{% endblock %}
+{% block link %}
+    {%load static%} 
+        
+    {% endblock %}
+{% block content %}
+    <p>{{summoner.name}}</p>
+    <p>{{summoner.level}}</p>
+    <img src="{{summoner.profile_icon.url}}" alt="" srcset="">
+    <pre>{{queue}}</pre>
+    <br>
+    {{rank}}
+{% endblock %}
+
