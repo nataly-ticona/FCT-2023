@@ -1,3 +1,5 @@
+
+
 {%extends 'tfg/base.html'%}  
 
 {% block link %}
@@ -9,18 +11,21 @@
 {% block content %}
     <div class="user_admin">
         <div class="data_user">
-            <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
+            <div class="data-img">
+                <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
+            </div>
             <div class="data">
-                <h2>Username: {{user.nb_user}}</h2>
-                <h4>Nickname: {{user.nick_name_user}}</h4>
+                <h2> {{user.nb_user}}</h2>
+                <h4><i>"{{user.nick_name_user}}"</i></h4>
                 <p>Date joined: {{user.date_joined_user}}</p>
-               
-                {% if currentUser.user == user %}
-                <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+                <div class="private-data">
+                    {% if currentUser.user == user %}
+                    <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+                    <p><a href="{% url 'logout'%}">Log out</a></p>
+                    <p><a href="{% url 'reset_password'%}">Reset my password</a></p>
+                    {% endif %}
+                </div>
                 
-                <a href="{% url 'logout'%}">Log out</a>
-                <a href="{% url 'reset_password'%}">Reset my password</a>
-                {% endif %}
             </div>
         </div>
     </div>

@@ -13,16 +13,24 @@ main{
 }
 
 .data_user{
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
 }
 
-.data_user>img{
-    width: 10rem;
-    height: 10rem;
+.data-img>img, .data-img{
+    width: 15rem;
+    height: 15rem;
     border-radius: 50%;
+}
+
+.data{
+    text-align: start;
+}
+
+.private-data > a, .private-data{
+    width: 100%;
 }
 .posts_list{
     display: flex;
