@@ -42,6 +42,7 @@ def registerPage(request):
 
     if request.method =='POST':
         form = CreateUserForm(request.POST)
+       
         # validar que el email no se repite
         if form.is_valid():
             cuenta = form.save()
