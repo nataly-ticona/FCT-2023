@@ -31,3 +31,7 @@ h2{
     width: 4rem;
     height: 4rem;
 }
+
+.user-profile, .content-post>a>img {
+    border-radius: 50%;
+}

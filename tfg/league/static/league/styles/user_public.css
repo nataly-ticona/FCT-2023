@@ -43,7 +43,7 @@ main{
     width: fit-content;
 }
 
-h2{
+.header-post h2{
     padding-left: 6px;
 }
 

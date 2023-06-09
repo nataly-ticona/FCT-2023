@@ -26,8 +26,8 @@
             <li><a href="{% url 'register'%}">Registro</a></li>
             <li><a href="{% url 'login'%}">Log in</a></li>
             {% endif %}
-            <li><a href="{% url 'ranking'%}">Ladder</a></li>
-            <li><a href="{% url 'posts'%}">Posts</a></li>
+            <li><a href="{% url 'ranking'%}">Ranking</a></li>
+            <li><a href="{% url 'posts'%}">Otras builds de WikGi</a></li>
             {% if  request.user.is_authenticated %}
             <li><a href="{% url 'user' request.user.user.nb_user %}"><img src="/media/imagen/users/profile_menu.png" alt="profile icon" height="20"></a></li>
             {% endif %}

@@ -30,18 +30,13 @@
         {% endfor %}
         </div>
         <div class="data-chart">
-            <input type="hidden" name="attack" value="{{champion.info.attack}}">
+            <input type="hidden" name="attack" id="attack" value="{{champion.info.attack}}">
             <input type="hidden" name="defense" value="{{champion.info.defense}}">
             <input type="hidden" name="magic" value="{{champion.info.magic}}">
             <input type="hidden" name="difficulty" value="{{champion.info.difficulty}}">
         </div>
-        
-        <p>Ataque: {{champion.info.attack}}/10</p>
-        <p>Defensa: {{champion.info.defense}}/10</p>
-        <p>Magia: {{champion.info.magic}}/10</p>
-        <p>Dificultad: {{champion.info.difficulty}}/10</p>
-        
-        <details open> 
+      
+        <details > 
             <summary>Historia del personaje</summary>
             {{lore.text}}
         </details>

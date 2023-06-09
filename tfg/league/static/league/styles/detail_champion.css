@@ -8,13 +8,11 @@
     width: 100%;
     display: flex;
     gap:10px;
-    background-color: red;
     
 }
 .champion-habilities{
     width: 100%;
     justify-content: center;
-    background-color: blue;
 }
 .champion-items{
     background-color: palegreen;
