@@ -7,19 +7,18 @@
 
 {%block title %}Account settings{% endblock %}
 {% block content %}
-    <div class="account_settings">
         <div class="account_setting_image">
             <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
         </div>
         <div class="account_settings_form">
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" value="actualizar">
+                {{form.as_p}} 
+                <input type="submit" value="actualizar" class="sumbit">
             </form>
+            <div class="reset-password">
+                <p><b><a href="{% url 'reset_password'%}">¿Olvidaste la contraseña??</a></b></p>
+            </div>
         </div>
-        <div class="reset-password">
-            <p><a href="{% url 'reset_password'%}">Reset my password</a></p>
-        </div>
-    </div>
+        
 {% endblock %}

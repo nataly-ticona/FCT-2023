@@ -1,31 +1,43 @@
-.account_settings{
+main{
     display: flex;
     margin: 0 auto;
-    width: 40em;
+    width: 55%;
     text-align: center;
     padding: 2rem ;
 }
 .account_setting_image{
     width: 30rem;
 }
-.account_setting_image>img{
-  width: 100%;
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-}
+    .account_setting_image>img{
+    width: 100%;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
 .account_settings_form{
     width: 60rem;
     padding: 20px 0 0 20px;
+    text-align: start;
 }
 
-.account_settings_form input{
-    background-color: rgba(255, 255, 255, 0.111);
-    border: 0px;
-    color: var(--headings-color);
-} 
-.account_settings_form input[type="submit"]{
-    margin-top: 1rem;
-    padding: 10px;
-    background-color: var(--link-color);
-}
+    .account_settings_form input{
+        width: 15rem;
+        margin-left: 1rem;
+        padding-left: 5px;
+        background-color: rgba(255, 255, 255, 0.111);
+        border: 0px;
+        color: var(--headings-color); 
+    } 
+    .account_settings_form label{
+        color: var(--headings-color); 
+    }
+
+    .sumbit{
+        width: 7rem !important;
+        border-radius: 10px;
+        margin-left: 0 !important;
+        margin-top: 1rem;
+        padding: 5px;
+        background-color: var(--link-colorh2) !important;
+    }
