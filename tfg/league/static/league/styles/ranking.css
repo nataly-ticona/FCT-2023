@@ -69,10 +69,20 @@
     background-color: var(--background-color);
 }
 .search-bar-ranking{
+    padding-top: 1rem;
     max-width: 30%;
     display: flex;
     gap:1rem;
 }
 #searchBarRanking{
-    border-radius: 2px;
+    border-radius: 30px;
+    padding: 0.5rem;
+    background-color: var(--background-divs2);
+    color: var(--headings-color);
+    border-color: var(--link-colorh2);
+}
+#searchBarRanking{
+    border-color: var(--link-colorh2);
+    outline: none !important;
+    box-shadow: none;
 }
