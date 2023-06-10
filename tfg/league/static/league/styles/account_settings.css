@@ -2,7 +2,6 @@
     display: flex;
     margin: 0 auto;
     width: 40em;
-    background-color: var(--background-divs);
     text-align: center;
     padding: 2rem ;
 }

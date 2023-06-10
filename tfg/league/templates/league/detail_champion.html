@@ -7,105 +7,111 @@
         <script src="https://cdn.canvasjs.com/canvasjs.min.js" defer></script>
     {% endblock %}
 {% block content %}
-
-<div class="champion">
-    <div class="champion-profile">
-        <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
-        <h1>{{champion.name}}
-            <br>
-            "{{title.text}}"
-        </h1>
-    </div>
-    <div class="champion-habilities">
-        <div class="champion_info">
-            {% for abilitie_champion in img_champion_abilities %}
-            {% if champion.name|cut:' ' in  abilitie_champion %}
-            <img src="/media/imagen/league/spell/{{abilitie_champion}}" alt="{{abilitie_champion}} ">
-            {% endif %} 
-        {% endfor %}
-        {% for passive_champion in img_champion_passives %}
-            {% if champion.name|cut:' ' in  passive_champion %}
-            <img src="/media/imagen/league/passive/{{passive_champion}}" alt="{{passive_champion}} ">
-            {% endif %} 
-        {% endfor %}
-        </div>
-        <div class="data-chart">
-            <input type="hidden" name="attack" id="attack" value="{{champion.info.attack}}">
-            <input type="hidden" name="defense" value="{{champion.info.defense}}">
-            <input type="hidden" name="magic" value="{{champion.info.magic}}">
-            <input type="hidden" name="difficulty" value="{{champion.info.difficulty}}">
-        </div>
-        <details> 
-            <summary>Historia del personaje</summary>
-            {{lore.text}}
-        </details>
-        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    </div>
-    <div class="champion-items">
-        <h2>ARAM</h2>
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-
-        <h2>Grieta del invocador</h2>
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-        <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" height="65">
-    </div>
-    
-     <br>
+    <h1 class="center">{{champion.name}}</h1>
     <div id="carouselExample" class="carousel slide">
-        <h3>Skins</h3>  
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_0.jpg" alt="{{champion.name}} skin" class="d-block w-100" >
             </div>
-                    
             {% for skin_champion in img_champion_skin %}
                 {% if champion.name|cut:' ' in  skin_champion and skin_champion != champion.name|cut:' '|add:'_0.jpg'%}
                     <div class="carousel-item">
                         <img src="/media/imagen/league/skins/{{skin_champion}}" alt="{{skin_champion}} skin" class="d-block w-100" >
-                        <!-- <div class="carousel-caption">
-                            <h3>{{champion.name}}</h3>
-                        </div> -->
                     </div>
                 {% endif %} 
             {% endfor %}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <br>
-    <div class="button-post">
+    <div class="champion-profile">
+        <div class="champion-icon">
+            <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
+        </div>
+        <div class="champion-title">
+            <h1>{{champion.name}}</h1> 
+            <h3><i> "{{title.text}}" </i></h3> 
+        </div>
+    </div>
+   
+    <h2><b>Habilidades</b></h2>
+    <div class="champion-habilities">
+        {% for abilitie_champion in img_champion_abilities %}
+            {% if champion.name|cut:' ' in  abilitie_champion %}
+                <img src="/media/imagen/league/spell/{{abilitie_champion}}" alt="{{abilitie_champion}}" class="item-adjust">
+            {% endif %} 
+        {% endfor %}
+        {% for passive_champion in img_champion_passives %}
+            {% if champion.name|cut:' ' in  passive_champion %}
+                <img src="/media/imagen/league/passive/{{passive_champion}}" alt="{{passive_champion}}" class="item-adjust">
+            {% endif %} 
+        {% endfor %}
+    </div>
+    <div class="champion-history">
+        <details> 
+            <summary>Historia del personaje</summary>
+            {{lore.text}}
+        </details>
+    </div>
+    </div>
+    <h2><b>Builds aconsejadas</b></h2>
+    <div class="champion-items">
+        <div class="aram-items">
+            <h3>ARAM</h3>
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+        </div>
+        <div class="normal-items">
+            <h3>Grieta del invocador</h3>
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+            <img src="/media/imagen/league/item/{{img_champion_items|random }}" alt="{{item_champion}}" class="item-adjust">
+        </div>
+    </div>
+    
+    <h2><b>Estadísticas del campeón</b></h2>
+    <div class="data-chart">
+        <input type="hidden" name="attack" id="attack" value="{{champion.info.attack}}">
+        <input type="hidden" name="defense" value="{{champion.info.defense}}">
+        <input type="hidden" name="magic" value="{{champion.info.magic}}">
+        <input type="hidden" name="difficulty" value="{{champion.info.difficulty}}">
+    </div>
+    <div class="champion-chart">
+        <div id="chartContainer" class="champion-chart-detail"></div>
+    </div>
+
+    <div class="button-post ">
         <a href="{% url 'createPost' champion.name %}">Crear mi propia build</a>
     </div>
-    {% for post in posts_champion%}
-        <!-- parametros: 'nombre url' la variable del modelo, en este caso de la api el modelo Champion  -->
-            <img src="{{champion.image.url}}" alt="{{champion.name}} ">
-            <span>{{post.user_post}}</span>
-            <span>{{post.tittle_post}}</span>
-            <img src="/media/imagen/league/item/{{post.items1}}" alt="" width="40">
-            <img src="/media/imagen/league/item/{{post.items2}}" alt="" width="40">
-            <img src="/media/imagen/league/item/{{post.items3}}" alt="" width="40">
-            <img src="/media/imagen/league/item/{{post.items4}}" alt="" width="40">
-            <img src="/media/imagen/league/item/{{post.items5}}" alt="" width="40">
-            <img src="/media/imagen/league/item/{{post.items6}}" alt="" width="40">
-            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="">
-            <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="">
-            <img src="{{post.keystone}}" alt="" width="90">
-    {% endfor %}
-</div>
-
+    <h2><b>Otras builds</b></h2>
+    <div class="post">
+        {% for post in posts_champion%}
+            <div class="post-detail">
+                <a href="{% url 'user' post.user_post.nb_user %}" class="radious item-adjust"><img src="/media/{{post.user_post.photo_user}}" alt="{{post.user_post.nb_user}}" class="item-adjust radious"></a>
+                <img src="/media/imagen/league/item/{{post.items1}}" alt="{{post.items1}}" class="item-adjust">
+                <img src="/media/imagen/league/item/{{post.items2}}" alt="{{post.items2}}" class="item-adjust">
+                <img src="/media/imagen/league/item/{{post.items3}}" alt="{{post.items3}}" class="item-adjust">
+                <img src="/media/imagen/league/item/{{post.items4}}" alt="{{post.items4}}" class="item-adjust">
+                <img src="/media/imagen/league/item/{{post.items5}}" alt="{{post.items5}}" class="item-adjust">
+                <img src="/media/imagen/league/item/{{post.items6}}" alt="{{post.items6}}" class="item-adjust">
+                <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells1}}" alt="{{post.summoner_spells1}}" class="item-adjust">
+                <img src="/media/imagen/league/summoner_spells/{{post.summoner_spells2}}" alt="{{post.summoner_spells2}}" class="item-adjust">
+                <img src="{{post.keystone}}" alt="{{post.keystone}}" class="item-adjust">
+            </div>
+        {% endfor %}
+    </div>
+        
 {% endblock %}

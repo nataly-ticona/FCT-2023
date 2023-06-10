@@ -26,7 +26,7 @@ main{
     color: var(--text-color);
     font-size: var(--text-size);
     min-height: calc(60vh - 3.4rem);
-    border-radius: 30px;
+    border-radius: 10px;
 }
 header{
     padding-bottom: 1rem;
