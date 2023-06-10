@@ -1,16 +1,14 @@
+main{
+    width: fit-content;
+}
 h1{
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    text-align: center;
 }
 .user_data, .errors{
     margin: 0 auto;
-    width: 40rem;
-    background-color: var(--background-divs);
     text-align: center;
     padding: 2rem ;
-}
-
-.errors{
-    color: var(--text-error);
 }
 
 .user_data input{
@@ -18,14 +16,20 @@ h1{
     border: 0px;
     color: var(--headings-color);
 }
+.img{
+    width: 14rem;
+    height: 14rem;
+}
+label{
+    text-align: left;
+}
 
 .user_data input[type="submit"]{
     padding: 10px;
+    border-radius: 10px;
     background-color: var(--link-colorh2);
 }
-input[type="text"], input[type="password"], input[type="email"]{
-    padding: 0.5rem;
-}
+
 #remember-me{
     width: 2rem;
 }
@@ -47,6 +51,8 @@ input[type="text"], input[type="password"], input[type="email"]{
 .form-register>.container-input{
     width: 80%;
 }
-label{
-    text-align: left;
+
+
+.errors{
+    color: var(--text-error);
 }

@@ -8,6 +8,8 @@
 {%block title %}Volver al inicio{% endblock %}
 {% block content %}
 <div class="form_password">
-<a href="{% url 'login'%}">Volver a iniciar sesión</a>
+    <img src="/media/imagen/users/password_image.png" alt="imagen de una cerradura" class="img">
+    <p class="color-text">¡La contraseña ha sido actualizada! Accede ahora al siguiente link para iniciar sesión de nuevo.</p>
+    <a href="{% url 'login'%}">Volver a iniciar sesión</a>
 </div>
 {% endblock %}

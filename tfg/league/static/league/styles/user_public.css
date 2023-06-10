@@ -1,68 +1,54 @@
 main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    gap: 1rem;
-}
-.user_admin, .posts_list{
-    width: 80%;
-    background-color: var(--background-divs);
-    text-align: center;
-    padding: 2rem ;
-}
-
-.data_user{
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 20% 80%;
-}
-
-.data-img>img, .data-img{
-    width: 15rem;
-    height: 15rem;
-    border-radius: 50%;
-}
-
-.data{
-    text-align: start;
-}
-
-.private-data > a, .private-data{
-    width: 100%;
-}
-.posts_list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    gap: 1rem;
-}
-.post{
     width: fit-content;
-}
-
-.header-post h2{
-    padding-left: 6px;
-}
-
-.header-post{
-    margin-top:1rem ;
-    padding: 1rem 1rem 0rem 1rem;
-    display: flex;
-    justify-content: flex-start;
-    background-color: var(--background-divs2);
-}
-.content-post{
-    padding: 1rem;
-    background-color: var(--background-divs2);
+    padding: 2rem ;
 }
 .item{
     width: 4rem;
     height: 4rem;
 }
 
-.r-1bwzh9t {
-    color: rgb(255 255 255);
+    .data_user{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        padding-bottom: 1rem;
+    }
+
+    .data-img>img, .data-img{
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+    }
+
+    .data{
+        padding-left: 1rem;
+        text-align: start;
+    }
+
+    .private-data > a, .private-data{
+        width: 100%;
+    }
+.posts_list{
+    border-top: 2px solid white;
+    padding-top: 1rem;
 }
+    .post{
+        width: fit-content;
+        
+    }
+
+        .header-post h2{
+            padding-left: 6px;
+        }
+
+        .header-post{
+            margin-top:1rem ;
+            padding: 1rem 1rem 0rem 1rem;
+            display: flex;
+            justify-content: flex-start;
+            background-color: var(--background-divs2);
+        }
+        .content-post{
+            padding: 1rem;
+            background-color: var(--background-divs2);
+        }

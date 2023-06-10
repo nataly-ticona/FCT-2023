@@ -9,30 +9,28 @@
 
 {%block title %} {{user.nb_user}} {% endblock %}
 {% block content %}
-    <div class="user_admin">
-        <div class="data_user">
-            <div class="data-img">
-                <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
+    <div class="data_user">
+        <div class="data-img">
+            <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
+        </div>
+        <div class="data">
+            <h2> {{user.nb_user}}</h2>
+            <h4><i>"{{user.nick_name_user}}"</i></h4>
+            <p> 
+                <svg width="20" viewBox="0 0 24 24" aria-hidden="true" class="r-1bwzh9t r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M7 4V3h2v1h6V3h2v1h1.5C19.89 4 21 5.12 21 6.5v12c0 1.38-1.11 2.5-2.5 2.5h-13C4.12 21 3 19.88 3 18.5v-12C3 5.12 4.12 4 5.5 4H7zm0 2H5.5c-.27 0-.5.22-.5.5v12c0 .28.23.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5H17v1h-2V6H9v1H7V6zm0 6h2v-2H7v2zm0 4h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-4h2v-2h-2v2z" ></path></g></svg>
+                Date joined: {{user.date_joined_user}}</p>
+            <div class="private-data">
+                {% if currentUser.user == user %}
+                <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
+                <p><a href="{% url 'logout'%}">Cerrar sesión</a></p>
+                {% endif %}
             </div>
-            <div class="data">
-                <h2> {{user.nb_user}}</h2>
-                <h4><i>"{{user.nick_name_user}}"</i></h4>
-                <p> 
-                    <svg width="20" viewBox="0 0 24 24" aria-hidden="true" class="r-1bwzh9t r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M7 4V3h2v1h6V3h2v1h1.5C19.89 4 21 5.12 21 6.5v12c0 1.38-1.11 2.5-2.5 2.5h-13C4.12 21 3 19.88 3 18.5v-12C3 5.12 4.12 4 5.5 4H7zm0 2H5.5c-.27 0-.5.22-.5.5v12c0 .28.23.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5H17v1h-2V6H9v1H7V6zm0 6h2v-2H7v2zm0 4h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-4h2v-2h-2v2z" ></path></g></svg>
-                    Date joined: {{user.date_joined_user}}</p>
-                <div class="private-data">
-                    {% if currentUser.user == user %}
-                    <p><a href=" {% url 'accountsettings'%} ">Configurar mi cuenta</a></p>
-                    <p><a href="{% url 'logout'%}">Log out</a></p>
-                    {% endif %}
-                </div>
-                
-            </div>
+            
         </div>
     </div>
     {% if posts %}
     <div class="posts_list">
-        <h3>Posts de {{user.nb_user}}</h3>
+        <h3>Mis builds</h3>
         {% for post in posts %}
             <div class="post">
                 <div class="header-post">
