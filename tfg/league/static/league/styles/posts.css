@@ -10,6 +10,9 @@ main{
 .post{
     margin:0 auto;
     width: fit-content;
+    border-radius: 10px;
+
+    background-color: var(--background-divs2);
 }
 
 h2{
@@ -21,11 +24,9 @@ h2{
     padding: 1rem 1rem 0rem 1rem;
     display: flex;
     justify-content: flex-start;
-    background-color: var(--background-divs2);
 }
 .content-post{
     padding: 1rem;
-    background-color: var(--background-divs2);
 }
 .item{
     width: 4rem;

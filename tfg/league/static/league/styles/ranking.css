@@ -1,7 +1,8 @@
+main{
+    max-width: 80rem;
+}
 .ladder{
     margin: 0 auto;
-    max-width: 80rem;
-    background-color: var(--background-divs);
     padding: 1.5rem 3rem;
 }
 #pagination{

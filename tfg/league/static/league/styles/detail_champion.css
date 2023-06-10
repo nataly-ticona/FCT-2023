@@ -48,14 +48,12 @@ summary{
     }
 
 .champion-chart{
-    margin: 0 auto;
     width: 100%;
     height: 15rem;
     margin: 1rem;
 }
 
     .champion-chart-detail{
-        margin: 0 auto;
         width: 80%;
         height: 15rem;
     }
