@@ -1,22 +1,36 @@
-.champion{
-    margin: 0 auto;
+main{
     width: 80%;
-    background-color: var(--background-divs);
     padding: 3rem;
 }
-.champion-profile{
-    width: 100%;
-    display: flex;
-    gap:10px;
-    
+.item-adjust{
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5px;
 }
-.champion-habilities{
-    width: 100%;
-    justify-content: center;
+
+.champion-profile, .champion-habilities,.champion-items{
+    display: flex;
+}
+.champion-title{
+    padding-left: 10px;
+}
+
+.normal-items, .aram-items{
+    padding:1rem;
+}
+
+.champion-chart{
+    margin: 0 auto;
+    width: 80%;
+    height: 15rem;
+}
+
+.canvasjs-chart-container{
+    background-color: var(--background-divs2) !important;
+    color:  var(--background-divs2) !important;
 }
 .canvasjs-chart-credit{
-    
-    display: hidden !important;
+    display: none !important;
 }
 .button-post>a{
     padding: 10px;
