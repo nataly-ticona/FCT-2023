@@ -8,13 +8,13 @@
 {%block title %}Crear un post{% endblock %}
 {% block content %}
     <div class="user_data">
-        <h1>Crear post</h1>
+        <h1><b>Crear mi propia build</b></h1>
     </div>
     <div class="form-post">
         <form action="" method="post">
             {% csrf_token %}
             <label for="tittle_post">Titulo </label>
-            <input type="text" name="tittle_post" required>
+            <input type="text" name="tittle_post" required class="text">
             <div class="container-form">
                 <div class="container-item">
                     <label for="items1">Item 1</label>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <input type="submit" value="Create Post">
+            <input type="submit" value="Publicar mi build" class="submit">
         </form>
     </div>
     <div class="errors">

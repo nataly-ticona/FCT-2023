@@ -1,7 +1,6 @@
 main{
     width: 80rem;
     margin: 0 auto;
-    background-color: var(--background-divs);
     padding: 2rem;
     text-align: center;
 }
@@ -24,4 +23,38 @@ main{
 .form-check-inline>input:checked{
     background-color: purple;
     border-color: palevioletred;
+}
+.container-item{
+    background-color:  var(--background-divs2);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+.container-item >label{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 0.3rem;
+}
+
+.form-check-inline{
+    padding: 0.2rem;
+    background-color: #6b3d5dac;
+    margin-bottom: 0.4rem;
+    border-radius: 5px;
+    
+}
+.form-check-inline img{
+    opacity: 1;
+}
+.submit{
+    border: 0px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--link-colorh2);
+}
+
+.text{
+    background-color: rgba(255, 255, 255, 0.111);
+    border: 0px;
+    color: var(--headings-color);
+    margin-left: 0.1rem;
 }

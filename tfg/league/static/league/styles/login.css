@@ -15,6 +15,7 @@ h1{
     background-color: rgba(255, 255, 255, 0.111);
     border: 0px;
     color: var(--headings-color);
+    margin-left: 0.1rem;
 }
 .img{
     width: 14rem;
