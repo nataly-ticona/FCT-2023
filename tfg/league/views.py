@@ -42,11 +42,19 @@ def registerPage(request):
 
     if request.method =='POST':
         form = CreateUserForm(request.POST)
-       
+
         # validar que el email no se repite
+        usuarioRepetido = Usuario.objects.filter(nb_user=request.POST.get('username'))
+        if(usuarioRepetido.__len__()>0):
+            messages.info(request, 'El nombre de usuario ya existe')
+            return render(request, 'accounts/register.html', {'form':form})
+        emailRepetido = Usuario.objects.filter(email_user=request.POST.get('email'))
+        if(emailRepetido.__len__()>0):
+            messages.info(request, 'El correo proporcionado ya existe')
+            return render(request, 'accounts/register.html', {'form':form})
+        
         if form.is_valid():
             cuenta = form.save()
-                   
             email = EmailMessage(
                 'Bienvenido a Wikigames!', 
                 'Gracias por confiar en esta conmunidad',
@@ -63,7 +71,9 @@ def registerPage(request):
             )
             # user = authenticate(request, username = cuenta.username, password = cuenta.password)
             login(request, cuenta)
-            return redirect('index')          
+            return redirect('index')
+        else:
+            messages.info(request, f'Contraseña inválida. \n\nLa contraseña debe tener al menos 7 caracteres. \nTener al menos un valor numérico. \nNo puede ser similar al nombre de usuario.' )
     return render(request, 'accounts/register.html', {
         'form':form
     })
@@ -245,34 +255,36 @@ def createPost(request, champion_name):
     path_spells = str(base_dir) + "/imagen/league/summoner_spells" 
     img_items = os.listdir(path_item)  
     img_spells = os.listdir(path_spells)
+    titulo = Post.objects.filter(tittle_post=request.POST.get('tittle_post'))
     
     if request.method == "POST":
-        # create a form instance and populate it with data from the request:
-        form = CreatePost(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-        #    form.save()
-        #    si ponemos form.save se guardan dos
-            data_form =  form.save(commit=False)
-            # obtenemos datos y los limpiamos para no tener el codigo por defecto
-            Post.objects.create(
-                user_post = user,
-                champion = champion_name,
-                tittle_post = data_form.tittle_post,
-                keystone = data_form.keystone,
-                items1 = data_form.items1,
-                items2 = data_form.items2,
-                items3 = data_form.items3,
-                items4 = data_form.items4,
-                items5 = data_form.items5,
-                items6 = data_form.items6,
-                summoner_spells1 = data_form.summoner_spells1,
-                summoner_spells2 = data_form.summoner_spells2
-            )
-            return redirect('posts')  
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = CreatePost()
+        if(titulo.__len__()==0):
+            # create a form instance and populate it with data from the request:
+            form = CreatePost(request.POST)
+            # check whether it's valid:
+            if form.is_valid():
+            #    form.save()
+            #    si ponemos form.save se guardan dos
+                data_form =  form.save(commit=False)
+                # obtenemos datos y los limpiamos para no tener el codigo por defecto
+                Post.objects.create(
+                    user_post = user,
+                    champion = champion_name,
+                    tittle_post = data_form.tittle_post,
+                    keystone = data_form.keystone,
+                    items1 = data_form.items1,
+                    items2 = data_form.items2,
+                    items3 = data_form.items3,
+                    items4 = data_form.items4,
+                    items5 = data_form.items5,
+                    items6 = data_form.items6,
+                    summoner_spells1 = data_form.summoner_spells1,
+                    summoner_spells2 = data_form.summoner_spells2
+                )
+                return redirect('posts')   
+        else: 
+            messages.info(request, f'Ya existe el titulo del post: {request.POST.get("tittle_post")}') 
+    form = CreatePost()
 
     return render(request, "accounts/createPost.html", {"form": form,
                                                         'items':img_items, 

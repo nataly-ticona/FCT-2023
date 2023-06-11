@@ -24,13 +24,12 @@
             <input type="submit" value="Create User">
         </form>
     </div>
+   
     {% if messages %}
     <div class="errors">
         {% for message in messages%}
-            <p>{{message}}</p>
+            <p>{{message|linebreaks}}</p>
         {% endfor%}  
     </div>  
-    {% endif %}
-        
-   
+    {% endif %} 
 {% endblock %}

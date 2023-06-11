@@ -2,10 +2,10 @@ main{
     width: fit-content;
 }
 h1{
-    padding-top: 1rem;
+    padding: 1rem 0;
     text-align: center;
 }
-.user_data, .errors{
+.user_data{
     margin: 0 auto;
     text-align: center;
     padding: 2rem ;
@@ -16,6 +16,7 @@ h1{
     border: 0px;
     color: var(--headings-color);
     margin-left: 0.1rem;
+    padding: 0.5rem;
 }
 .img{
     width: 14rem;
@@ -55,5 +56,8 @@ label{
 
 
 .errors{
+    padding: 0 2rem 1rem 2rem;
+    margin: 0 auto;
+    text-align: center;
     color: var(--text-error);
 }

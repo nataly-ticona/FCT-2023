@@ -119,40 +119,12 @@
             <input type="submit" value="Publicar mi build" class="submit">
         </form>
     </div>
+    {% if messages %}
     <div class="errors">
-    {% for message in messages%}
-            <p>{{message}}</p>
+        {% for message in messages%}
+            <p>{{message|linebreaks}}</p>
         {% endfor%}  
     </div>  
-    {%comment%}
-    
-       <!-- {% for field in form %}
-                    {{field.label}}
-                    {{field}} 
-                    <br>  
-            {% endfor %}
-            <br> -->
-            <!-- {%for item in items%}
-                    
-            <img src="/media/imagen/league/item/{{item}}" alt="{{item}}">
-            
-            {% endfor %} -->
-        tittle_post    = models.CharField(max_length=200)
-        runes1         = models.CharField(max_length=200)
-        runes2         = models.CharField(max_length=200)
-        runes3         = models.CharField(max_length=200)
-        runes4         = models.CharField(max_length=200)
-        runes5         = models.CharField(max_length=200)
-        runes6         = models.CharField(max_length=200)
-        keystone       = models.CharField(max_length=200)
-        items1         = models.CharField(max_length=200)
-        items2         = models.CharField(max_length=200)
-        items3         = models.CharField(max_length=200)
-        items4         = models.CharField(max_length=200)
-        items5         = models.CharField(max_length=200)
-        items6         = models.CharField(max_length=200)
-        summoner_spells1 = models.CharField(max_length=200)
-        summoner_spells2 = models.CharField(max_length=200)
-    {%endcomment%}
+    {% endif %} 
 {% endblock %}
 
