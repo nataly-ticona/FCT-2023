@@ -7,7 +7,41 @@
         <script src="https://cdn.canvasjs.com/canvasjs.min.js" defer></script>
     {% endblock %}
 {% block content %}
-    <h1 class="center">{{champion.name}}</h1>
+    <h1><b>{{champion.name}}</b></h1>
+    <nav class="navbar navbar-expand-sm" style="background-color: var(--background-divs2); color: var(--link-colorh2);">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <svg width="30" height="30" fill="white" class="bi bi-justify" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+              </svg>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile_section">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#habilities_section">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#history_section">Historia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#builds_section">Builds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#chart_section">Estadísticas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#post_section">Crear build</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#wikgi_section">Otras builds</a>
+                </li>
+            </ul>
+           
+        </div>
+    </nav>
+
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -30,7 +64,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="champion-profile">
+    <div class="champion-profile" id="profile_section">
         <div class="champion-icon">
             <img src="/media/imagen/league/champion/{{champion.name|cut:' '}}.png" alt="{{champion.name}} icon">
         </div>
@@ -40,7 +74,7 @@
         </div>
     </div>
    
-    <h2><b>Habilidades</b></h2>
+    <h2 id="habilities_section"><b>Habilidades</b></h2>
     <div class="champion-habilities">
         {% for abilitie_champion in img_champion_abilities %}
             {% if champion.name|cut:' ' in  abilitie_champion %}
@@ -53,14 +87,14 @@
             {% endif %} 
         {% endfor %}
     </div>
-    <div class="champion-history">
+    <div class="champion-history" id="history_section">
         <details> 
             <summary>Historia del personaje</summary>
             {{lore.text}}
         </details>
     </div>
     </div>
-    <h2><b>Builds aconsejadas</b></h2>
+    <h2 id="builds_section"><b>Builds aconsejadas</b></h2>
     <div class="champion-items">
         <div class="aram-items">
             <h3>ARAM</h3>
@@ -82,7 +116,7 @@
         </div>
     </div>
     
-    <h2><b>Estadísticas del campeón</b></h2>
+    <h2 id="chart_section"><b>Estadísticas del campeón</b></h2>
     <div class="data-chart">
         <input type="hidden" name="attack" id="attack" value="{{champion.info.attack}}">
         <input type="hidden" name="defense" value="{{champion.info.defense}}">
@@ -93,10 +127,10 @@
         <div id="chartContainer" class="champion-chart-detail"></div>
     </div>
 
-    <div class="button-post ">
+    <div class="button-post" id="post_section">
         <a href="{% url 'createPost' champion.name %}">Crear mi propia build</a>
     </div>
-    <h2><b>Otras builds</b></h2>
+    <h2 id="wikgi_section"><b>Otras builds de WikGi</b></h2>
     <div class="post">
         {% for post in posts_champion%}
             <div class="post-detail">
