@@ -41,16 +41,28 @@
            
         </div>
     </nav>
+    
+    {%comment%}
+    {% for skin in champion.skins %}
+        {{skin.num}}
+    {%endfor%}
+    {%endcomment%}
 
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/media/imagen/league/skins/{{champion.name|cut:' '}}_0.jpg" alt="{{champion.name}} skin" class="d-block w-100" >
+                 <!-- <div class="carousel-caption d-none d-md-block">
+                            <p>Description</p>
+                        </div> -->
             </div>
             {% for skin_champion in img_champion_skin %}
                 {% if champion.name|cut:' ' in  skin_champion and skin_champion != champion.name|cut:' '|add:'_0.jpg'%}
                     <div class="carousel-item">
                         <img src="/media/imagen/league/skins/{{skin_champion}}" alt="{{skin_champion}} skin" class="d-block w-100" >
+                        <!-- <div class="carousel-caption d-none d-md-block">
+                            <p>Description</p>
+                        </div> -->
                     </div>
                 {% endif %} 
             {% endfor %}
@@ -63,6 +75,9 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div>
+   
+       
     </div>
     <div class="champion-profile" id="profile_section">
         <div class="champion-icon">

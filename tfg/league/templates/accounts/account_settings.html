@@ -8,9 +8,7 @@
 {%block title %}Ajustes de usuario{% endblock %}
 {% block content %}
         
-        <div class="account_setting_image">
-            <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
-        </div>
+        
         <div class="account_settings_form">
             <h1><b>
                 <svg width="30" height="30" fill="currentColor" class="bi bi-flower1" viewBox="0 0 16 16">
@@ -18,10 +16,11 @@
                 </svg>
                 Actualizacion de datos</b>
             </h1>
-            <div class="img-form">
-                <img src="/media/imagen/users/profile_menu.png" alt="imagen de un usuario" class="img">
+            <div class="account_setting_image">
+                <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}">
             </div>
-            <form action="" method="POST" enctype="multipart/form-data">
+           
+            <form action="" method="POST" enctype="multipart/form-data" class="form-data">
                 {% csrf_token %}
                 {{form.as_p}} 
                 <input type="submit" value="actualizar" class="sumbit">

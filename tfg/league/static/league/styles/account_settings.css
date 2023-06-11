@@ -1,37 +1,40 @@
 main{
     display: flex;
+    justify-content: center;
     margin: 0 auto;
-    width: 55%;
-    text-align: center;
+    width: fit-content;
     padding: 2rem ;
 }
 h1{
     padding-bottom: 1rem;
 }
-.img-form{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1rem;
+
+.account_settings_form{
+    width: fit-content;
+    padding: 20px 0 0 20px;
+    text-align: start;
 }
 .img{
     width: 5rem;     
 }
 .account_setting_image{
-    width: 30rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
     .account_setting_image>img{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        width: 10rem;
         border-radius: 50%;
     }
-
-.account_settings_form{
-    width: 60rem;
-    padding: 20px 0 0 20px;
-    text-align: start;
+.img-form{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
 }
 
+.form-data{
+    padding-top: 1rem;
+}
     .account_settings_form input{
         width: 15rem;
         margin-left: 1rem;
