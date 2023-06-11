@@ -20,11 +20,6 @@
     <script src="{% static 'league/js/base.js' %}"></script>
 </head>
 <body>
-    <div class="loader" id="loader">
-        <span class="loader-text">LOADING</span>
-        <br>
-        <img src="/media/imagen/users/wikiGames_logo.png" alt="logo de wikigames">
-    </div>
     <header>
         <nav class="nav">
             <div class="nav-index">
@@ -46,7 +41,12 @@
         </nav>
     </header>
     
-    <main>     
+    <main>  
+        <div class="loader" id="loader">
+            <span class="loader-text">LOADING</span>
+            <br>
+            <img src="/media/imagen/users/wikiGames_logo.png" alt="logo de wikigames">
+        </div>   
         {% block content %}{% endblock %}
     </main>
     <!-- Footer -->

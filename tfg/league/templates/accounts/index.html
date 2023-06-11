@@ -22,7 +22,7 @@
             <div class="users">
                 {% for user in users %}
                     <a href="{% url 'user' user.nb_user %}">
-                        <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40">
+                        <img src="{{user.photo_user.url}}" alt="foto de {{user.nb_user}}" width="40" class="champion-img">
                     </a>
                 {% endfor %}
             </div>

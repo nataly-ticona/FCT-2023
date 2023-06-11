@@ -5,11 +5,22 @@ main{
     text-align: center;
     padding: 2rem ;
 }
+h1{
+    padding-bottom: 1rem;
+}
+.img-form{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+.img{
+    width: 5rem;     
+}
 .account_setting_image{
     width: 30rem;
 }
     .account_setting_image>img{
-    width: 100%;
+        width: 100%;
         display: flex;
         justify-content: center;
         border-radius: 50%;
