@@ -60,6 +60,12 @@ main{
 }
 .crown-image{
     width: 4rem;
+    animation: jumpingCrown .5s linear alternate infinite;
+}
+@keyframes jumpingCrown {
+    0%   {transform: translate3d(0,20%,0) scale3d(1,1,1);}
+    40%  {transform: translate3d(0,-15%,0) scale3d(.8,1.5,1);}
+    100% {transform: translate3d(0,-40%,0) scale3d(1.2,.7,1);}
 }
 .ladder-item-wins-losses-header, .ladder-item-wins-losses,
 .ladder-item-lp-header, .ladder-item-lp
@@ -77,12 +83,9 @@ main{
 }
 #searchBarRanking{
     border-radius: 30px;
-    padding: 0.5rem;
+    padding: 0.7rem;
     background-color: var(--background-divs2);
     color: var(--headings-color);
-    border-color: var(--link-colorh2);
-}
-#searchBarRanking{
     border-color: var(--link-colorh2);
     outline: none !important;
     box-shadow: none;

@@ -1,5 +1,6 @@
 main{
-    width: fit-content;
+    /* width: fit-content; */
+    width: 30%;
 }
 h1{
     padding: 1rem 0;
