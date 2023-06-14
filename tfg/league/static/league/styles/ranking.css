@@ -1,5 +1,5 @@
 main{
-    max-width: 80rem;
+    width: 80%;
 }
 .ladder{
     margin: 0 auto;
@@ -89,4 +89,9 @@ main{
     border-color: var(--link-colorh2);
     outline: none !important;
     box-shadow: none;
+}
+@media (max-width:900px) {
+    main{
+        width: 100%;
+    }
 }

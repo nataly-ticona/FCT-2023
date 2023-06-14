@@ -36,3 +36,8 @@ h2{
 .user-profile, .content-post>a>img {
     border-radius: 50%;
 }
+@media (max-width:900px) {
+    main{
+        width: 80%;
+    }
+}

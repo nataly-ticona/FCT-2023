@@ -1,6 +1,6 @@
 main{
     /* width: fit-content; */
-    width: 30%;
+    width: 40vw;
 }
 h1{
     padding: 1rem 0;
@@ -18,6 +18,7 @@ h1{
     color: var(--headings-color);
     margin-left: 0.1rem;
     padding: 0.5rem;
+    max-width: 60%;
 }
 .img{
     width: 14rem;
@@ -61,4 +62,30 @@ label{
     margin: 0 auto;
     text-align: center;
     color: var(--text-error);
+}
+
+@media (max-width:1250px) {
+    main{
+        width: 60%;
+        
+    }
+}
+
+@media (max-width:900px) {
+    main{
+        width: 80%;
+    }
+}
+
+@media (max-width:650px) {
+    main{
+        width: 100%;
+
+    }
+    .container-input{
+        width: 100%;
+    }
+    .form-register>.container-input{
+        width: 100%;
+    }
 }
